@@ -1,0 +1,10 @@
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Never commit large/real data (notebooks generate synthetic data inline)
+*.gz
+station-snapshots-2019-03.csv
+20250303_Viajes_distritos.csv.gz
