@@ -1,11 +1,11 @@
 ---
 dataset_id: bicing-barcelona-synthetic-trips
 synthetic: true
-generated_by: courses/mobillity-univ/docs/notebooks/notebook-3.5-trips.ipynb
+generated_by: courses/mobillity-univ/docs/notebooks/build-module-3-lab.py (seeded builder; notebook 3.5 reads this CSV from the published course repo)
 source_url: synthetic — no public trip-level Bicing data exists; this is fabricated
 download_date: 2026-06-28
 license: CC0 — synthetic data, contains no real records
-update_cadence: static — regenerate by re-running the notebook (seed=42)
+update_cadence: static — regenerate with build-module-3-lab.py --csv <dir> (seed=42)
 format: CSV (comma-delimited, UTF-8)
 time_coverage: synthetic March 2019
 ---
@@ -55,5 +55,12 @@ focus on asking questions rather than cleaning. Seed-stable patterns:
 
 ## Regenerate
 
-Open `courses/mobillity-univ/docs/notebooks/notebook-3.5-trips.ipynb`
-and run **Section 0**. Seeded (`np.random.default_rng(42)`) → reproducible byte-for-byte.
+Run the module's seeded builder:
+
+```
+.venv/bin/python courses/mobillity-univ/docs/notebooks/build-module-3-lab.py --csv <dir>
+```
+
+Seeded (`np.random.default_rng(42)`) → reproducible byte-for-byte. The notebook does **not**
+generate the data — `notebook-3.5-trips.ipynb` **reads** this published copy from the course's
+public repo (`…/barcelona-bicing-synthetic/trips-sample.csv`).

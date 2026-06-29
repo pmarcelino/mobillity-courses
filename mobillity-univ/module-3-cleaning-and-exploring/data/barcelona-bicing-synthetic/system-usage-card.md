@@ -1,11 +1,11 @@
 ---
 dataset_id: bicing-barcelona-synthetic-system-usage
 synthetic: true
-generated_by: courses/mobillity-univ/docs/notebooks/notebook-3.3-system-usage.ipynb
+generated_by: courses/mobillity-univ/docs/notebooks/build-module-3-lab.py (seeded builder; notebook 3.3 reads this CSV from the published course repo)
 source_url: synthetic — fabricated to match the schema of bicing-barcelona-2019-03 system-usage
 download_date: 2026-06-28
 license: CC0 — synthetic data, contains no real records
-update_cadence: static — regenerate by re-running the notebook (seed=42)
+update_cadence: static — regenerate with build-module-3-lab.py --csv <dir> (seed=42)
 format: CSV (comma-delimited, UTF-8)
 time_coverage: synthetic 2019-03-01 → 2019-03-18 (5-minute cadence)
 ---
@@ -66,5 +66,12 @@ Seed-stable:
 
 ## Regenerate
 
-Open `courses/mobillity-univ/docs/notebooks/notebook-3.3-system-usage.ipynb`
-and run **Section 0**. Seeded (`np.random.default_rng(42)`) → reproducible byte-for-byte.
+Run the module's seeded builder:
+
+```
+.venv/bin/python courses/mobillity-univ/docs/notebooks/build-module-3-lab.py --csv <dir>
+```
+
+Seeded (`np.random.default_rng(42)`) → reproducible byte-for-byte. The notebook does **not**
+generate the data — `notebook-3.3-system-usage.ipynb` **reads** this published copy from the
+course's public repo (`…/barcelona-bicing-synthetic/system-usage-sample.csv`).

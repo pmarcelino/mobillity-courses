@@ -1,11 +1,11 @@
 ---
 dataset_id: bicing-barcelona-synthetic-snapshots
 synthetic: true
-generated_by: courses/mobillity-univ/docs/notebooks/notebook-3.1-handling-missing-values.ipynb and notebook-3.2-fixing-data-types.ipynb (identical Section 0)
+generated_by: courses/mobillity-univ/docs/notebooks/build-module-3-lab.py (seeded builder; notebooks 3.1 & 3.2 read this CSV from the published course repo)
 source_url: synthetic — fabricated to match the schema and quirks of bicing-barcelona-2019-03
 download_date: 2026-06-28
 license: CC0 — synthetic data, contains no real records
-update_cadence: static — regenerate by re-running the notebook (seed=42)
+update_cadence: static — regenerate with build-module-3-lab.py --csv <dir> (seed=42)
 format: CSV (comma-delimited, UTF-8, quoted list fields)
 time_coverage: synthetic March 2019
 ---
@@ -71,7 +71,13 @@ Counts are exact and seed-stable:
 
 ## Regenerate
 
-Open `courses/mobillity-univ/docs/notebooks/notebook-3.1-handling-missing-values.ipynb`
-(or `notebook-3.2-fixing-data-types.ipynb` — their Section 0 is identical) and run
-**Section 0**. The generator is seeded (`np.random.default_rng(42)`), so the file is
-reproduced byte-for-byte every time.
+Run the module's seeded builder:
+
+```
+.venv/bin/python courses/mobillity-univ/docs/notebooks/build-module-3-lab.py --csv <dir>
+```
+
+It re-creates this CSV byte-for-byte (`np.random.default_rng(42)`). The notebooks do **not**
+generate the data — `notebook-3.1-handling-missing-values.ipynb` and
+`notebook-3.2-fixing-data-types.ipynb` **read** this published copy from the course's public
+repo (`…/barcelona-bicing-synthetic/station-snapshots-sample.csv`).
