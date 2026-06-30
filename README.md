@@ -1,8 +1,10 @@
-# mobillity
+# MobiLLITY
 
-Open course materials from **Mobillity** — practical, hands-on data analysis done with the help of an LLM, on public European mobility data.
+**MobiLLITY** is a project — supported by [EIT Urban Mobility](https://www.eiturbanmobility.eu/) — that helps the urban-mobility sector put large language models to practical use.
 
-Each top-level folder is one course.
+This repository holds MobiLLITY's open, hands-on course materials. Each top-level folder is one course.
+
+MobiLLITY is built on a partnership between [**xval.ai**](https://xval.ai) and [**Factual**](https://factual-consulting.com/).
 
 ## Courses
 - [**mobillity-univ**](./mobillity-univ/) — Mobillity University. Start here: [open the materials](./mobillity-univ/index.md).
