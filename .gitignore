@@ -8,3 +8,7 @@ __pycache__/
 *.gz
 station-snapshots-2019-03.csv
 20250303_Viajes_distritos.csv.gz
+
+# Publish build artifacts — generated locally each publish run, kept off the public site
+mobillity-univ/index.md
+mobillity-univ/PUBLISH-LINKS.md
