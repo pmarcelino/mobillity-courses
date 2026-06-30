@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  bumper_type: conclusion
+  course_id: mobillity-univ
+  epic_id: epic-6
+  epic_title: Telling the Story
+  stories_covered: [story-6.1, story-6.2, story-6.3, story-6.4, story-6.5]
+  next_epic: course-wrap
+  review_status: draft
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 6: Telling the Story – Conclusion</title>
+<style>
+  :root {
+    --bg-base: #0A1929;
+    --bg-container: #0F2238;
+    --accent-teal: #06B6D4;
+    --accent-teal-soft: rgba(6, 182, 212, 0.12);
+    --success-green: #10B981;
+    --success-green-soft: rgba(16, 185, 129, 0.12);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-strong: #FFFFFF;
+    --binary-blue: #1E40AF;
+  }
+
+  @page {
+    size: A4;
+    margin: 25mm 16mm 18mm 16mm;
+  }
+
+  @page :first {
+    margin: 18mm 16mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-base);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 28px auto;
+    background-color: var(--bg-container);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-header {
+    position: relative;
+    padding: 44px 40px 36px 40px;
+    background-color: var(--bg-base);
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(10, 25, 41, 0) 0%, rgba(10, 25, 41, 0.85) 70%, rgba(10, 25, 41, 1) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='200' viewBox='0 0 360 200'><g font-family='monospace' font-size='13' fill='%231E40AF' opacity='0.32'><text x='10' y='20'>1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0</text><text x='4' y='40'>0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 0 1 0 1 0</text><text x='14' y='60'>1 1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 1 0</text><text x='2' y='80'>0 0 1 0 1 1 0 0 1 1 0 1 1 0 0 1 0 1 1 0</text><text x='12' y='100'>1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0</text><text x='6' y='120'>0 1 1 0 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 1</text><text x='10' y='140'>1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0</text><text x='4' y='160'>0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 0 0 1 0</text><text x='14' y='180'>1 1 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0 1</text></g></svg>");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 360px 200px;
+    color: var(--text-strong);
+  }
+
+  .module-tag {
+    display: inline-block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .nav-header h1 {
+    margin: 0;
+    color: var(--text-strong);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-marks {
+    margin-top: 28px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .brand-marks span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border: 1px solid rgba(241, 245, 249, 0.18);
+    border-radius: 4px;
+  }
+
+  .content-area {
+    padding: 36px 40px 44px 40px;
+  }
+
+  h2 {
+    color: var(--accent-teal);
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0 0 14px 0;
+    color: var(--text-primary);
+  }
+
+  ul {
+    margin: 8px 0 18px 0;
+    padding-left: 24px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  li strong {
+    color: var(--text-strong);
+  }
+
+  strong {
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+
+  code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.92em;
+    color: var(--accent-teal);
+    background-color: rgba(6, 182, 212, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .highlight-box {
+    background-color: var(--accent-teal-soft);
+    border-left: 4px solid #06B6D4;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+
+  .highlight-box p { margin: 0; }
+
+  .highlight-box .label {
+    display: block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .success-box {
+    background-color: var(--success-green-soft);
+    border-left: 4px solid #10B981;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+
+  .success-box p { margin: 0; }
+
+  .success-box .label {
+    display: block;
+    color: var(--success-green);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+  .highlight-box, .success-box {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .highlight-box .label, .success-box .label {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  li { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+
+  @media (max-width: 720px) {
+    .container { margin: 12px; border-radius: 8px; }
+    .nav-header { padding: 28px 22px 24px 22px; }
+    .nav-header h1 { font-size: 1.7rem; }
+    .content-area { padding: 24px 22px 32px 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-header" role="banner">
+      <span class="module-tag">Module 6: Telling the Story</span>
+      <h1>From Raw Data to a Decision People Can Act On</h1>
+      <div class="brand-marks" role="group" aria-label="Programme branding">
+        <span aria-label="Mobillity">Mobillity</span>
+        <span aria-label="EIT Urban Mobility">EIT Urban Mobility</span>
+        <span aria-label="Co-funded by the European Union">Co-funded by the European Union</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <h2>Congratulations on Closing the Loop</h2>
+      <div class="success-box">
+        <span class="label">Well done</span>
+        <p>
+          A finding no longer stops at a clean notebook. You can shape it into a story, tailor it
+          to whoever needs it, and generate the presentation that carries it out the door.
+        </p>
+      </div>
+
+      <h2>What You&rsquo;ve Accomplished</h2>
+      <p>
+        Five lectures, one repeatable pipeline from a verified result to a stakeholder-ready deck.
+      </p>
+      <ul>
+        <li>
+          <strong>You structure an analysis as a story.</strong> You arrange findings as
+          Minto&rsquo;s Pyramid suggests &mdash; main point first, supporting reasons next,
+          evidence last &mdash; and use the one-sentence test to keep the message decision-ready.
+        </li>
+        <li>
+          <strong>You adapt one message for different audiences.</strong> You direct the LLM to
+          reshape one analysis into several communications by naming who is reading, what they
+          must decide, and how much detail they expect.
+        </li>
+        <li>
+          <strong>You generate slide decks from your notebook.</strong> You have the LLM write the
+          code that builds the presentation &mdash; a PowerPoint file, an interactive web deck,
+          markdown slides, or academic pages &mdash; instead of building it by hand.
+        </li>
+        <li>
+          <strong>You run the whole pipeline end-to-end.</strong> You structure the narrative,
+          draft the brief, generate the slides, review the result, and refine over quick rounds
+          &mdash; the notebook your single source of truth.
+        </li>
+      </ul>
+
+      <h2>Real-World Impact</h2>
+      <p>
+        The analysis that gets acted on is rarely the most sophisticated &mdash; it is the one its
+        audience understood. Taking a result from a raw dataset to a presentation a transport
+        authority can decide on is what turns your work from an exercise into influence.
+      </p>
+
+      <div class="highlight-box">
+        <span class="label">Key insight</span>
+        <p>
+          The path from analysis to impact has two equal halves: doing the analysis right, and
+          telling its story in the way your audience can act on. You can now do both.
+        </p>
+      </div>
+
+      <h2>What&rsquo;s Next: Completing the Course</h2>
+      <p>
+        This was the final module. You have travelled the whole arc &mdash; clean, explore,
+        visualise, verify, and now communicate &mdash; and can run it end-to-end with the LLM at
+        every step. What is left is to put it to work on an analysis of your own.
+      </p>
+
+      <h2>Before You Continue</h2>
+      <p>
+        Make sure the core moves feel solid:
+      </p>
+      <ul>
+        <li>Can you state what your analysis proves in one sentence, then name the two or three reasons that make it believable?</li>
+        <li>Can you see why the same finding should sound different for a director deciding a budget than for the riders who feel it on their commute?</li>
+        <li>Can you direct the LLM to write code that turns your narrative and charts into a deck &mdash; and review what it produced?</li>
+        <li>Do you know when to reach for a PowerPoint file, an interactive web deck, quick markdown slides, or formal academic pages?</li>
+      </ul>
+
+      <div class="success-box">
+        <span class="label">Onward</span>
+        <p>
+          You can take data all the way from a raw file to a decision someone acts on. That is the
+          whole job &mdash; and it is now yours. Congratulations on finishing the course.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

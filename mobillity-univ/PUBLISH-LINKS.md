@@ -102,6 +102,34 @@ Button (HTML):
 
 ---
 
+## module-1-ai-fluency/bumpers/epic-1-conclusion.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-1-ai-fluency/bumpers/epic-1-conclusion.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-1-ai-fluency/bumpers/epic-1-conclusion.html
+
+---
+
+## module-1-ai-fluency/bumpers/epic-1-intro.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-1-ai-fluency/bumpers/epic-1-intro.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-1-ai-fluency/bumpers/epic-1-intro.html
+
+---
+
+## module-2-getting-started/bumpers/epic-2-conclusion.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-2-getting-started/bumpers/epic-2-conclusion.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-2-getting-started/bumpers/epic-2-conclusion.html
+
+---
+
+## module-2-getting-started/bumpers/epic-2-intro.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-2-getting-started/bumpers/epic-2-intro.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-2-getting-started/bumpers/epic-2-intro.html
+
+---
+
 ## module-3-cleaning-and-exploring/bumpers/epic-3-conclusion.html
 
 - GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-3-cleaning-and-exploring/bumpers/epic-3-conclusion.html
@@ -113,5 +141,47 @@ Button (HTML):
 
 - GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-3-cleaning-and-exploring/bumpers/epic-3-intro.html
 - GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-3-cleaning-and-exploring/bumpers/epic-3-intro.html
+
+---
+
+## module-4-visualizing/bumpers/epic-4-conclusion.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-4-visualizing/bumpers/epic-4-conclusion.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-4-visualizing/bumpers/epic-4-conclusion.html
+
+---
+
+## module-4-visualizing/bumpers/epic-4-intro.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-4-visualizing/bumpers/epic-4-intro.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-4-visualizing/bumpers/epic-4-intro.html
+
+---
+
+## module-5-evaluating/bumpers/epic-5-conclusion.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-5-evaluating/bumpers/epic-5-conclusion.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-5-evaluating/bumpers/epic-5-conclusion.html
+
+---
+
+## module-5-evaluating/bumpers/epic-5-intro.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-5-evaluating/bumpers/epic-5-intro.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-5-evaluating/bumpers/epic-5-intro.html
+
+---
+
+## module-6-telling-the-story/bumpers/epic-6-conclusion.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-6-telling-the-story/bumpers/epic-6-conclusion.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-6-telling-the-story/bumpers/epic-6-conclusion.html
+
+---
+
+## module-6-telling-the-story/bumpers/epic-6-intro.html
+
+- GitHub: https://github.com/pmarcelino/mobillity-courses/blob/main/mobillity-univ/module-6-telling-the-story/bumpers/epic-6-intro.html
+- GitHub Pages: https://pmarcelino.github.io/mobillity-courses/mobillity-univ/module-6-telling-the-story/bumpers/epic-6-intro.html
 
 ---

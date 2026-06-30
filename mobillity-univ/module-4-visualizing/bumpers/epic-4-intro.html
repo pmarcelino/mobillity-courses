@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  bumper_type: intro
+  course_id: mobillity-univ
+  epic_id: epic-4
+  epic_title: Visualizing Results
+  stories_covered: [story-4.1, story-4.2, story-4.3, story-4.4, story-4.5, story-4.6]
+  review_status: draft
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Module 4: Visualizing Results – Introduction</title>
+<style>
+  :root {
+    --bg-base: #0A1929;
+    --bg-container: #0F2238;
+    --accent-teal: #06B6D4;
+    --accent-teal-soft: rgba(6, 182, 212, 0.12);
+    --success-green: #10B981;
+    --success-green-soft: rgba(16, 185, 129, 0.12);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-strong: #FFFFFF;
+    --binary-blue: #1E40AF;
+  }
+
+  @page {
+    size: A4;
+    margin: 25mm 16mm 18mm 16mm;
+  }
+
+  @page :first {
+    margin: 18mm 16mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-base);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 28px auto;
+    background-color: var(--bg-container);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-header {
+    position: relative;
+    padding: 44px 40px 36px 40px;
+    background-color: var(--bg-base);
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(10, 25, 41, 0) 0%, rgba(10, 25, 41, 0.85) 70%, rgba(10, 25, 41, 1) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='200' viewBox='0 0 360 200'><g font-family='monospace' font-size='13' fill='%231E40AF' opacity='0.32'><text x='10' y='20'>1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0</text><text x='4' y='40'>0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 0 1 0 1 0</text><text x='14' y='60'>1 1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 1 0</text><text x='2' y='80'>0 0 1 0 1 1 0 0 1 1 0 1 1 0 0 1 0 1 1 0</text><text x='12' y='100'>1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0</text><text x='6' y='120'>0 1 1 0 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 1</text><text x='10' y='140'>1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0</text><text x='4' y='160'>0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 0 0 1 0</text><text x='14' y='180'>1 1 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0 1</text></g></svg>");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 360px 200px;
+    color: var(--text-strong);
+  }
+
+  .module-tag {
+    display: inline-block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .nav-header h1 {
+    margin: 0;
+    color: var(--text-strong);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-marks {
+    margin-top: 28px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .brand-marks span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border: 1px solid rgba(241, 245, 249, 0.18);
+    border-radius: 4px;
+  }
+
+  .content-area {
+    padding: 36px 40px 44px 40px;
+  }
+
+  h2 {
+    color: var(--accent-teal);
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0 0 14px 0;
+    color: var(--text-primary);
+  }
+
+  ul {
+    margin: 8px 0 18px 0;
+    padding-left: 24px;
+  }
+
+  li {
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  li strong {
+    color: var(--text-strong);
+  }
+
+  strong {
+    color: var(--text-strong);
+    font-weight: 600;
+  }
+
+  code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.92em;
+    color: var(--accent-teal);
+    background-color: rgba(6, 182, 212, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .highlight-box {
+    background-color: var(--accent-teal-soft);
+    border-left: 4px solid #06B6D4;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+
+  .highlight-box p {
+    margin: 0;
+  }
+
+  .highlight-box .label {
+    display: block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+  .highlight-box, .success-box {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .highlight-box .label, .success-box .label {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  li { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+
+  @media (max-width: 720px) {
+    .container { margin: 12px; border-radius: 8px; }
+    .nav-header { padding: 28px 22px 24px 22px; }
+    .nav-header h1 { font-size: 1.7rem; }
+    .content-area { padding: 24px 22px 32px 22px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-header" role="banner">
+      <span class="module-tag">Module 4: Visualizing Results</span>
+      <h1>Describe the Chart &mdash; Let the Model Draw It</h1>
+      <div class="brand-marks" role="group" aria-label="Programme branding">
+        <span aria-label="Mobillity">Mobillity</span>
+        <span aria-label="EIT Urban Mobility">EIT Urban Mobility</span>
+        <span aria-label="Co-funded by the European Union">Co-funded by the European Union</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <h2>Welcome to the Module</h2>
+      <p>
+        You have cleaned and explored real mobility data, and you have found things worth
+        showing. This module is about showing them &mdash; clearly. You will not learn plotting
+        syntax. You will learn to direct the LLM to generate the chart, read what it produces,
+        and refine it in plain language until it communicates.
+      </p>
+      <p>
+        That distinction is the whole module: the first chart is never the final one. The skill
+        is not drawing &mdash; it is choosing the right view and improving it through
+        conversation.
+      </p>
+
+      <h2>What You&rsquo;ll Learn</h2>
+      <p>
+        Across six short lectures, you will move from a single bar chart to an interactive map of
+        a city&rsquo;s network &mdash; all directed, never hand-coded.
+      </p>
+      <ul>
+        <li>
+          <strong>Choose the right chart for the question.</strong> Match a question&rsquo;s
+          shape &mdash; comparison, trend, distribution, relationship, geography &mdash; to a
+          chart family, and use the LLM to prototype two or three options and pick the one that
+          reads clearest.
+        </li>
+        <li>
+          <strong>Generate static and statistical charts.</strong> Direct the LLM to build
+          publication-ready <code>matplotlib</code> charts, and reach for <code>seaborn</code>
+          when you need to see a distribution or correlation that a bar of averages would hide.
+        </li>
+        <li>
+          <strong>Build interactive and geographic views.</strong> Add hover, zoom, and
+          filtering with <code>plotly</code>, and put mobility data where it belongs &mdash; on
+          a map &mdash; to reveal coverage, clustering, and gaps that no table can show.
+        </li>
+        <li>
+          <strong>Iterate to a polished result.</strong> Run the full loop &mdash; generate,
+          see, describe the gap, regenerate &mdash; and learn when a chart needs another round
+          and when it needs a fresh start.
+        </li>
+      </ul>
+
+      <h2>Why Visualizing Mobility Data Matters</h2>
+      <p>
+        Transport is spatial and temporal by nature: where stations cluster, when usage peaks,
+        how service spreads across a city. These patterns are invisible in a spreadsheet and
+        obvious on the right chart. For a mobility analyst, the map and the time-series are not
+        decoration &mdash; they are the finding.
+      </p>
+
+      <div class="highlight-box">
+        <span class="label">Remember</span>
+        <p>
+          The first output is a draft. You improve it by describing the gap between what you see
+          and what you want &mdash; in words &mdash; and the LLM rewrites the code. Three or four
+          rounds to a polished chart is normal, not a sign you did something wrong.
+        </p>
+      </div>
+
+      <h2>Ready to Begin?</h2>
+      <p>
+        The module starts before any chart is drawn &mdash; with the question every
+        visualization should answer first: of all the ways to show this, which one makes it
+        clearest?
+      </p>
+    </div>
+  </div>
+</body>
+</html>
