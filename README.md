@@ -1,6 +1,6 @@
 # MobiLLITY
 
-**MobiLLITY** is a project — supported by [EIT Urban Mobility](https://www.eiturbanmobility.eu/) — that helps the urban-mobility sector put large language models to practical use.
+[**MobiLLITY**](https://mobillity.eu/) is a project — supported by [EIT Urban Mobility](https://www.eiturbanmobility.eu/) — that helps the urban-mobility sector put large language models to practical use.
 
 This repository holds MobiLLITY's open, hands-on course materials. Each top-level folder is one course.
 
