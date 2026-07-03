@@ -2,7 +2,7 @@
 dataset_id: bicing-barcelona-synthetic-trips
 synthetic: true
 generated_by: courses/mobillity-univ/docs/notebooks/build-module-3-lab.py (seeded builder; notebook 3.5 reads this CSV from the published course repo)
-source_url: synthetic — no public trip-level Bicing data exists; this is fabricated
+source_url: synthetic — real Bicing snapshots are ~370 MB (too big for Colab), so this is fabricated
 download_date: 2026-06-28
 license: CC0 — synthetic data, contains no real records
 update_cadence: static — regenerate with build-module-3-lab.py --csv <dir> (seed=42)
