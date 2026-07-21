@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  doc_type: reading-lecture (guide)
+  course_id: mobillity-univ
+  module: module-1-ai-fluency
+  companion_to: story-1.7 (when casual prompting fails)
+  title: "Prompt Engineering: How You Ask Changes What You Get"
+  review_status: draft
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prompt Engineering: How You Ask Changes What You Get &ndash; Mobillity</title>
+<style>
+  :root {
+    --bg-base: #0A1929;
+    --bg-container: #0F2238;
+    --bg-code: #071320;
+    --accent-teal: #06B6D4;
+    --accent-teal-soft: rgba(6, 182, 212, 0.12);
+    --success-green: #10B981;
+    --success-green-soft: rgba(16, 185, 129, 0.12);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-strong: #FFFFFF;
+    --binary-blue: #1E40AF;
+  }
+
+  @page { size: A4; margin: 25mm 16mm 18mm 16mm; }
+  @page :first { margin: 18mm 16mm; }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; background-color: var(--bg-base); }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 28px auto;
+    background-color: var(--bg-container);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-header {
+    position: relative;
+    padding: 44px 40px 36px 40px;
+    background-color: var(--bg-base);
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(10, 25, 41, 0) 0%, rgba(10, 25, 41, 0.85) 70%, rgba(10, 25, 41, 1) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='200'><g font-family='monospace' font-size='13' fill='%231E40AF' opacity='0.32'><text x='10' y='20'>1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0</text><text x='4' y='40'>0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 0 1 0 1 0</text><text x='14' y='60'>1 1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 1 0</text><text x='2' y='80'>0 0 1 0 1 1 0 0 1 1 0 1 1 0 0 1 0 1 1 0</text><text x='12' y='100'>1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0</text><text x='6' y='120'>0 1 1 0 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 1</text><text x='10' y='140'>1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0</text><text x='4' y='160'>0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 0 0 1 0</text></g></svg>");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 360px 200px;
+    color: var(--text-strong);
+  }
+
+  .module-tag {
+    display: inline-block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .nav-header h1 {
+    margin: 0;
+    color: var(--text-strong);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-marks { margin-top: 28px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .brand-marks span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border: 1px solid rgba(241, 245, 249, 0.18);
+    border-radius: 4px;
+  }
+
+  .content-area { padding: 36px 40px 44px 40px; }
+
+  h2 {
+    color: var(--accent-teal);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  h2:first-of-type { margin-top: 0; }
+
+  p { margin: 0 0 14px 0; color: var(--text-primary); }
+
+  ul, ol { margin: 8px 0 18px 0; padding-left: 24px; }
+  li { margin-bottom: 12px; color: var(--text-primary); }
+  li strong { color: var(--text-strong); }
+  strong { color: var(--text-strong); font-weight: 600; }
+  em { color: var(--text-primary); }
+
+  a { color: var(--accent-teal); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
+  a:hover { color: #22D3EE; }
+
+  code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.92em;
+    color: var(--accent-teal);
+    background-color: rgba(6, 182, 212, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  pre {
+    background-color: var(--bg-code);
+    border: 1px solid rgba(6, 182, 212, 0.20);
+    border-left: 4px solid var(--accent-teal);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+  pre code {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    white-space: pre;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.9rem; }
+  th, td {
+    text-align: left;
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(241, 245, 249, 0.12);
+    vertical-align: top;
+  }
+  th { color: var(--accent-teal); font-weight: 600; border-bottom: 1px solid rgba(6, 182, 212, 0.35); }
+
+  .highlight-box {
+    background-color: var(--accent-teal-soft);
+    border-left: 4px solid #06B6D4;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+  .highlight-box p { margin: 0; }
+  .highlight-box .label {
+    display: block; color: var(--accent-teal);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  .success-box {
+    background-color: var(--success-green-soft);
+    border-left: 4px solid #10B981;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+  .success-box p { margin: 0; }
+  .success-box .label {
+    display: block; color: var(--success-green);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+  .highlight-box, .success-box, pre, table { break-inside: avoid; page-break-inside: avoid; }
+  .highlight-box .label, .success-box .label { break-after: avoid; page-break-after: avoid; }
+  li { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+  @media print { pre code { white-space: pre-wrap; word-break: break-word; } }
+
+  @media (max-width: 720px) {
+    .container { margin: 12px; border-radius: 8px; }
+    .nav-header { padding: 28px 22px 24px 22px; }
+    .nav-header h1 { font-size: 1.7rem; }
+    .content-area { padding: 24px 22px 32px 22px; }
+    table { font-size: 0.82rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-header" role="banner">
+      <span class="module-tag">Supplementary Guide &middot; AI Fluency</span>
+      <h1>Prompt Engineering: How You Ask Changes What You Get</h1>
+      <div class="brand-marks" role="group" aria-label="Programme branding">
+        <span aria-label="Mobillity">Mobillity</span>
+        <span aria-label="EIT Urban Mobility">EIT Urban Mobility</span>
+        <span aria-label="Co-funded by the European Union">Co-funded by the European Union</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <p>You already prompt language models every day. So it is tempting to treat "prompt engineering" as a repackaging of something you have covered. It isn't. There is a measurable gap between a casual prompt and an engineered one, and in data analysis that gap decides something concrete: whether the Python the model writes for you is correct, or confidently wrong.</p>
+      <p>Remember the lesson from <em>when casual prompting fails</em>: the fix was never a cleverer question typed into the chat box. It was changing <strong>how you direct the model</strong> — asking it to write code that processes every row and computes the real numbers, instead of asking it to <em>be</em> the analysis engine and hand you an answer it may have made up. This guide is about that skill, generalised: how to brief the model so it does the job well. The model writes the code. You own how well it is briefed.</p>
+      <h2>1. What is prompt engineering?</h2>
+      <p><strong>Prompt engineering is the craft of structuring your instructions so the model reliably does what you want</strong> — how you phrase the request, what context you include, and what shape of output you ask for. Anthropic puts it plainly: it is "how you phrase queries, specify style, provide context, and guide the model's behavior to achieve your goals."</p>
+      <p>A useful way to picture it, borrowed from Anthropic's own guidance: <strong>treat the model like a brilliant but brand-new colleague.</strong> It is fast and widely read, but it has never seen your dataset, doesn't know your definitions, and cannot tell what "good" looks like to you unless you say so. Their golden rule is a good test — <em>if you handed your prompt to a colleague with no context and they'd be confused, the model will be too.</em></p>
+      <p>Here is the difference on a mobility task. Suppose you have a bus timetable feed and want to find weak routes.</p>
+      <p><strong>A casual prompt:</strong></p>
+      <pre><code>Analyse this bus data and tell me which routes are underperforming.</code></pre>
+      <p><strong>An engineered prompt:</strong></p>
+      <pre><code>You are a transit data analyst. I have a GTFS feed as a pandas DataFrame `trips`
+with columns: route_id, trip_id, service_id, departure_time (HH:MM:SS, can exceed
+24:00), stop_count.
+
+"Underperforming" means a route whose average daily trip count is in the bottom
+quartile AND whose average stop_count is below the network median.
+
+Write pandas code that computes this, prints the flagged route_ids with their two
+metrics, and adds one sentence explaining each flag. Do not invent columns — if you
+need one that isn't listed, say so instead of assuming.</code></pre>
+      <p>The second prompt wins not because it is longer, but because it removes guesswork. The casual version forces the model to invent a definition of "underperforming," guess your column names, and decide on its own whether you wanted prose or code — three places it can quietly go wrong. The engineered version answers those questions up front, so the model spends its effort on the analysis instead of on mind-reading.</p>
+      <div class="highlight-box">
+        <span class="label">Key idea</span>
+        <p>Prompt engineering is not about magic words. It is about removing the guesswork — telling the model the things it cannot know but needs in order to be right.</p>
+      </div>
+      <h2>2. Why does it help? The evidence</h2>
+      <p>This is not folklore. The effect of <em>how</em> you prompt has been measured repeatedly in peer-reviewed work, and the effects can be large.</p>
+      <ul>
+        <li><strong>Asking the model to reason step by step changes accuracy.</strong> Wei et al. (2022) showed that "chain-of-thought" prompting — giving a few worked examples that spell out the reasoning — let a 540-billion-parameter model reach <em>then</em>-state-of-the-art accuracy on the GSM8K math-word-problem benchmark, beating a specially fine-tuned model that had a separate answer-checking model bolted on. Kojima et al. (2022) went further: with <em>no worked examples at all</em>, simply appending the phrase "Let's think step by step" raised accuracy on one benchmark from 17.7% to 78.7%, and on GSM8K from 10.4% to 40.7% (their paper is literally titled "Large Language Models are Zero-Shot Reasoners").</li>
+        <li><strong>Showing beats telling.</strong> Brown et al. (2020), the GPT-3 paper, established in-context "few-shot" learning: include a handful of input→output examples in the prompt and the model picks up the pattern and applies it to a new case — no retraining required.</li>
+        <li><strong>The same content, presented differently, gives different results.</strong> This is the flip side, and it is why deliberate structuring matters. Lu et al. (2022) found that merely <strong>reordering</strong> the few-shot examples could swing performance "between near state-of-the-art and random guess." Sclar et al. (2024) found that trivial <strong>formatting</strong> changes — spacing, separators, punctuation that don't change the meaning — moved accuracy by <em>up to 76 points</em> on one open model.</li>
+      </ul>
+      <p>Two honest caveats keep this in proportion. First, these are early findings on the models of their day: modern chat and reasoning-tuned models often already reason step by step by default, so the <em>size</em> of the "magic phrase" effect has shrunk — but the underlying result, that how you structure a request changes accuracy, still holds. (That shrinkage previews section 4's point — prompting guidance itself dates, which is why you check what's current.) Second, the sensitivity findings cut both ways — a single phrasing is not "the" answer. Mizrahi et al. (2024) argue that evaluating a model on one prompt is unreliable and you should try several. So the durable posture is: <strong>engineer the prompt, then verify the output</strong> — the same verification discipline this course returns to again and again.</p>
+      <div class="highlight-box">
+        <span class="label">Key idea</span>
+        <p>The takeaway is not "there is one magic prompt." It is that how you ask has a large, measurable effect — so it is worth doing on purpose, and worth checking.</p>
+      </div>
+      <div class="highlight-box">
+        <span class="label">When it's worth the effort</span>
+        <p>In fairness, the models have got good enough that for many everyday requests a plain, clear prompt is already enough — heavy prompt engineering changes little. Where it earns its keep is the harder cases: when you're optimising for quality or consistency, systematising a prompt you'll reuse many times, or rescuing a task where a simple prompt visibly failed. Spend the effort there, not on every message.</p>
+      </div>
+      <h2>3. The best practices all three providers agree on</h2>
+      <p>Anthropic, OpenAI, and Google each publish official prompting guidance. They use different words, but strip the wording away and the <strong>same seven practices appear in all three</strong>. Because they are the common ground of every major provider, they are the safe, durable bets — learn these first. Here is the same advice under each provider's own heading:</p>
+      <table>
+        <thead><tr><th>Practice</th><th>Anthropic calls it</th><th>OpenAI calls it</th><th>Google (Gemini) calls it</th></tr></thead>
+        <tbody>
+          <tr><td>1. Be explicit and specific</td><td>"Be clear and direct"</td><td>"Instructions"</td><td>"Clear and specific instructions"</td></tr>
+          <tr><td>2. Give context and the reason</td><td>"Add context to improve performance"</td><td>"Include relevant context information"</td><td>"Add context"</td></tr>
+          <tr><td>3. Show a few examples</td><td>"Use examples effectively"</td><td>"Few-shot learning"</td><td>"Zero-shot vs few-shot prompts"</td></tr>
+          <tr><td>4. Specify the output format</td><td>"Control the output format"</td><td>"Structured Outputs"</td><td>"Response format"</td></tr>
+          <tr><td>5. Separate the parts with structure</td><td>"Structure prompts with XML tags"</td><td>"Message formatting with Markdown and XML"</td><td>"Consistent formatting"</td></tr>
+          <tr><td>6. Break complex tasks into steps</td><td>"Prompt chaining"</td><td>Decompose into sub-requests</td><td>"Break down prompts into components"</td></tr>
+          <tr><td>7. Give the model a role</td><td>"Give Claude a role"</td><td>"Identity"</td><td>"role definitions (persona)"</td></tr>
+        </tbody>
+      </table>
+      <ol>
+        <li><strong>Be explicit and specific.</strong> State the task, the constraints, and what "done" looks like; don't rely on the model to infer them.<br>→ Instead of "summarise this survey," write "summarise this rider-satisfaction survey in five bullet points, one per service line, each with the mean score."</li>
+        <li><strong>Give context and the reason why.</strong> Tell the model the purpose and the audience — every provider notes the model generalises better when it understands <em>why</em>.<br>→ "This is for a transport authority deciding evening service, so weight recent months more heavily."</li>
+        <li><strong>Show a few examples (few-shot).</strong> Demonstrate the format or judgement you want with one to a handful of examples. Google is blunt: "We recommend to always include few-shot examples."<br>→ Label one flagged route as <code>service gap</code> the way you would categorise it, then ask the model to classify the rest of the routes the same way.</li>
+        <li><strong>Specify the output format.</strong> Ask for the exact shape — a table, a JSON object, a code block, a one-paragraph answer — so you don't burn a turn reformatting free-form text into the table or JSON you actually needed.<br>→ "Return a table with columns station_id, missing_pct, and a recommendation."</li>
+        <li><strong>Separate the parts of your prompt with structure.</strong> When a prompt mixes instructions, data, and examples, mark the boundaries — with headings or with descriptive XML-style tags like <code>&lt;csv data&gt;...&lt;/csv data&gt;</code> — so the model doesn't mistake one for another.<br>→ Wrap a pasted CSV in <code>&lt;csv data&gt;</code> tags so the model never reads a data value as an instruction.</li>
+        <li><strong>Break complex tasks into steps.</strong> For anything multi-stage, lay out the steps in order or split the work into a chain where each output feeds the next — because cramming a multi-stage analysis into one instruction is exactly where a model blends or skips steps.<br>→ "First list the cleaning steps this GTFS feed needs. Then, once I confirm, write the code for step one."</li>
+        <li><strong>Give the model a role.</strong> A sentence naming who the model should act as focuses its tone, priorities, and defaults — even one line makes a measurable difference.<br>→ Open with "You are a transit data analyst" so the model frames the whole task the way a domain expert would.</li>
+      </ol>
+      <div class="highlight-box">
+        <span class="label">Key idea</span>
+        <p>These are not a script to memorise. They are the questions to answer <em>before</em> you press enter: What exactly do I want? Why? Who should the model act as? Can I show an example? What format? Are the parts clearly separated? Is this one step or several?</p>
+      </div>
+      <h2>4. Where to get the best guidelines</h2>
+      <p>Here is the catch that trips people up: <strong>best practices move.</strong> Models change, and a prompt tuned for last year's model can actively hurt on this year's. This is not speculation — it is written into the providers' own docs.</p>
+      <p>A concrete case. For older models, a widely shared best practice was to spell out <em>every</em> rule you wanted — a long, defensive rulebook of "always do this, never do that." Anthropic's guidance for its newest model, Claude Fable 5, partly reverses that: because the model's instruction-following improved, "you can steer most behaviors with a brief instruction rather than enumerating each behavior by name," and a short instruction "is as effective as listing each pattern." The same page warns that prompts "developed for prior models are often too prescriptive… and can degrade output quality." So the old long rulebook is not just unnecessary now — it can make results <em>worse</em>. Watch the same cleaning task age:</p>
+      <p><strong>Written for an older model (the long rulebook):</strong></p>
+      <pre><code>Clean this GTFS feed. Follow these rules exactly:
+1. Drop rows with missing departure_time.
+2. Do NOT drop rows for missing stop_name.
+3. Convert departure_time values over 24:00:00 to valid times.
+4. Do NOT modify route_id.
+5. Do NOT add any columns.
+6. Do NOT summarise the result.
+7. Return only the cleaned DataFrame and nothing else.</code></pre>
+      <p><strong>Rewritten for the current model (per its own guidance):</strong></p>
+      <pre><code>Clean this GTFS feed so it's ready for a stop-frequency analysis. Keep changes
+minimal: fix departure_time values over 24:00:00 and drop rows with no
+departure_time, but don't restructure anything else. If a choice isn't obvious,
+ask me instead of guessing.</code></pre>
+      <p>Same task, shorter prompt, and it trusts the model's improved instruction-following instead of fighting it. This is why the durable skill is not memorising a fixed list of tricks — it is knowing <strong>where the current guidance lives, and reading it</strong> before a big or repeated task. Each provider keeps a living guide and even publishes model-specific pages:</p>
+      <ul>
+        <li><strong>Anthropic:</strong> the prompt-engineering overview and the "Prompting best practices" reference, plus per-model pages. <code>https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview</code></li>
+        <li><strong>OpenAI:</strong> the prompt-engineering guide, with a dedicated "latest model" best-practices page. <code>https://developers.openai.com/api/docs/guides/prompt-engineering</code></li>
+        <li><strong>Google (Gemini):</strong> the "Prompt design strategies" guide. <code>https://ai.google.dev/gemini-api/docs/prompting-strategies</code></li>
+      </ul>
+      <p>(This even loops back to section 2: remember the "Let's think step by step" finding? Many current reasoning models already do that by default, so asking for it explicitly can now be redundant — exactly the kind of thing the current guide will tell you.)</p>
+      <div class="success-box">
+        <span class="label">Try this</span>
+        <p>Before a big or repeated task, spend ten minutes on the current guide for the model you are actually using. It routinely changes what you decide to ask for.</p>
+      </div>
+      <h2>5. Metaprompting: let the model write the prompt</h2>
+      <p>You don't have to write the perfect prompt alone. <strong>Metaprompting is asking the model to write or improve a prompt for you</strong> — pointing the model at the task of prompting itself.</p>
+      <p><strong>Why does this work?</strong> Three honest reasons, two of them backed by research:</p>
+      <ul>
+        <li>Models are trained on enormous amounts of instructions, documentation, examples, and tutorials, so they have absorbed what good prompts tend to look like. Zhou et al. (2022) showed that instructions <em>generated by an LLM</em> matched or beat human-written prompts on most of the tasks they tested — the paper is titled, only half-jokingly, "Large Language Models Are Human-Level Prompt Engineers."</li>
+        <li>A model can critique text and rewrite it, so it can run the same generate → critique → improve loop on a prompt that a human editor would.</li>
+        <li>Practically, a prompt is something you can read, edit, and re-run instantly — there is no training loop involved, so trial-and-error is cheap and the result is right there for you to inspect.</li>
+      </ul>
+      <p><strong>One important limit:</strong> metaprompting works <em>within the model's ceiling.</em> It makes a solvable task easier to get right; it cannot make the model capable of something it fundamentally can't do. And because of the sensitivity you saw in section 2, always test the improved prompt rather than assuming it is better.</p>
+      <p>Here is the loop on a mobility task.</p>
+      <p><strong>Your rough prompt:</strong></p>
+      <pre><code>Analyse the bus route and tell me which stops are inefficient.</code></pre>
+      <p><strong>Your metaprompt (ask the model to improve it):</strong></p>
+      <pre><code>Improve the prompt below so a data analyst gets a reliable answer. Make it: define
+what "inefficient" means operationally, state the input columns, break the analysis
+into steps, and specify a structured output. Ask me for anything you need.
+
+Prompt: "Analyse the bus route and tell me which stops are inefficient."</code></pre>
+      <p><strong>What comes back</strong> is a far stronger prompt — something like:</p>
+      <pre><code>You are a transit operations analyst. Given a CSV with columns stop_id, stop_name,
+dwell_time_min, passengers_per_hour, distance_to_next_stop_km, identify inefficient
+stops.
+
+Flag a stop if any hold: passengers_per_hour &lt; 5, dwell_time_min &gt; 2, or
+distance_to_next_stop_km &lt; 0.5.
+
+Steps: (1) compute the mean of each metric across all stops; (2) flag stops crossing
+any threshold; (3) for each flagged stop, name the triggering metric and compare it
+to the route mean; (4) recommend consolidate / skip / investigate.
+
+Return JSON: a route summary, then one object per flagged stop with its metrics and
+recommendation.</code></pre>
+      <p>You just skipped the hard part of writing all that yourself. Providers ship this as a button: Anthropic's Console has a <strong>prompt generator</strong> and <strong>prompt improver</strong>; OpenAI has a <strong>Generate</strong> feature; Google offers a <strong>prompt optimizer</strong> in Vertex AI.</p>
+      <div class="success-box">
+        <span class="label">Try this</span>
+        <p>Paste your rough prompt and say: <em>"Improve this prompt for [task], and ask me for anything you need to make it precise."</em> Answer its questions — that back-and-forth is where the quality comes from.</p>
+      </div>
+      <h2>6. Metaprompting with the current best practices</h2>
+      <p>Metaprompting has one weakness: the model rewrites your prompt using whatever it learned during training — which may predate the current guidance entirely. A model released last year never saw this year's best-practices page. You close that gap by combining section 5 with section 4: <strong>point the model at the current guidance and have it rewrite your prompt to match.</strong> The most direct way is to give it the link to the guideline page for the exact model you're using — the same URLs from section 4.</p>
+      <p>Take the improved bus-stop prompt from section 5 and hand the model the live page:</p>
+      <pre><code>Rewrite the prompt below to follow the current best practices for Claude Fable 5,
+described here:
+https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5
+
+Prompt: "[the improved bus-stop prompt from section 5]"</code></pre>
+      <p>Because the model reads the page at the moment you ask, it can apply advice that did not even exist when it was trained — which is the whole point. If your interface can't open links, paste the key points into a <code>&lt;guidance&gt;</code> block instead; same idea, done by hand:</p>
+      <pre><code>Here is current guidance for the model I'm using:
+&lt;guidance&gt;
+- Give the reason, not only the request: say what the analysis is for.
+- Trust the model's instruction-following: a brief, clear instruction beats a long
+  rulebook, and over-prescriptive prompts can degrade output.
+- Give the model explicit permission to say when it's unsure instead of guessing.
+&lt;/guidance&gt;
+
+Rewrite the prompt below to follow that guidance, for Claude Fable 5.
+Prompt: "[the improved bus-stop prompt from section 5]"</code></pre>
+      <p>Either way, notice how the result differs from the plain rewrite in section 5. It adds the <em>intent</em> the guidance asks for, loosens the rigid rulebook the guidance warns against, and builds in the permission-to-be-uncertain that reduces made-up answers:</p>
+      <pre><code>You are a transit operations analyst. I'm reviewing this route for a transport
+authority deciding which stops to consolidate, so the goal is defensible flags, not a
+long list.
+
+From the CSV (stop_id, stop_name, dwell_time_min, passengers_per_hour,
+distance_to_next_stop_km), find stops that are weak on ridership, dwell time, or
+spacing relative to the rest of the route. Use your judgement on thresholds and state
+the ones you used. For each flagged stop, give the evidence and a recommendation.
+
+If the data is too thin to judge a stop, say so rather than guessing.</code></pre>
+      <p>Two things to notice. It drops section 5's numbered steps — with a model that reasons well by default (section 2), you don't have to dictate the decomposition, though for a weaker model you'd keep section 3's explicit steps. And loosening the thresholds isn't undoing "be specific" from section 3: the model still has to state the thresholds it used, so it isn't guessing — you're just not hand-coding the numbers.</p>
+      <p>You are now pairing the model's fluency with the provider's up-to-date, model-specific advice, instead of trusting the model's training-time memory of what "good prompting" means — and, as always, you test the result on a real case before relying on it.</p>
+      <div class="success-box">
+        <span class="label">Try this</span>
+        <p>Take a draft prompt and add one line: <em>"follow the current best practices at [paste the guideline URL for your model from section 4]."</em> If your tool can't open links, paste a few lines from the guide into a <code>&lt;guidance&gt;</code> block instead. Then compare the result against the version you'd have written without it.</p>
+      </div>
+      <h2>7. Keep a prompt library</h2>
+      <p>One last habit, and it is the one that compounds. <strong>When a prompt works well, save it.</strong></p>
+      <p>In practice you reuse the same handful of prompt shapes constantly: load a GTFS feed and report its structure, profile a bike-share trip log, plot a distribution of survey responses, sanity-check a route metric against the raw trip data. Rewriting those from memory each time is wasted effort, and it makes your work inconsistent — slightly different every session.</p>
+      <p><strong>Why a library matters:</strong> consistency across your work, reuse instead of rework, easy sharing with classmates or a team, and — importantly — <strong>versioning</strong>, so when a prompt suddenly stops giving good results you can see what changed. This isn't a niche idea: Anthropic frames its prompt-template tooling around exactly consistency and version control, and OpenAI's guide now recommends you "version prompts in code," with review and tests, like any other part of a project.</p>
+      <p>If you want ready-made inspiration or heavier tooling, these exist:</p>
+      <ul>
+        <li><strong>Anthropic's Prompt Library</strong> — a public collection of tested prompts. <code>https://docs.anthropic.com/claude/prompt-library</code></li>
+        <li><strong>OpenAI Cookbook</strong> — worked examples and prompt recipes. <code>https://cookbook.openai.com</code></li>
+        <li><strong>Prompt-management tools</strong> for teams — LangSmith / LangChain Hub, PromptLayer, Humanloop — which add storage, versioning, sharing, and testing.</li>
+      </ul>
+      <p>But you do not need any paid tool to start. <strong>A lightweight personal library</strong> is enough:</p>
+      <ul>
+        <li>Keep one Markdown file (or a small Git repo) grouped by task — <em>loading</em>, <em>cleaning</em>, <em>plotting</em>, <em>checking</em>.</li>
+        <li>One entry per prompt: a short <strong>title</strong>, the <strong>prompt itself</strong> with <code>{{placeholders}}</code> for the parts that change (like <code>{{filename}}</code> or <code>{{columns}}</code>), <strong>when to use it</strong>, and a one-line note on <strong>what worked</strong> or what to watch for.</li>
+        <li>Track it with Git so you can roll back when an edit makes a prompt worse.</li>
+      </ul>
+      <div class="success-box">
+        <span class="label">Try this</span>
+        <p>Next time a prompt gives you a genuinely good result, don't just move on. Copy it into a <code>prompts.md</code> file with a title and a placeholder or two. In a month you'll have a personal toolkit worth more than any generic template pack.</p>
+      </div>
+      <h2>The one thing to remember</h2>
+      <p>Prompt engineering is <strong>directing, not guessing.</strong> The specific tricks will keep changing — that is why section 4 matters — but the habit won't: be explicit, give context and a format, show an example, read the current guidance for your model, let the model help you write the prompt, check that draft against today's guidance, and keep the prompts that work. The model writes the code; you are responsible for how well it's briefed. And then — every time — you verify what it produced.</p>
+      <h2>Sources</h2>
+      <p><strong>Section 1 — definition &amp; analogy</strong></p>
+      <ul>
+        <li>Anthropic, "Best practices for prompt engineering for 2026" (blog, Nov 2025). <a href="https://claude.com/blog/best-practices-for-prompt-engineering">https://claude.com/blog/best-practices-for-prompt-engineering</a></li>
+        <li>Anthropic, "Prompting best practices" (docs; the "brilliant but new employee" analogy and golden rule). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</a></li>
+      </ul>
+      <p><strong>Section 2 — evidence</strong></p>
+      <ul>
+        <li>Wei et al. (2022), "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models," NeurIPS 2022. arXiv:2201.11903 — <a href="https://arxiv.org/abs/2201.11903">https://arxiv.org/abs/2201.11903</a></li>
+        <li>Kojima et al. (2022), "Large Language Models are Zero-Shot Reasoners," NeurIPS 2022. arXiv:2205.11916 — <a href="https://arxiv.org/abs/2205.11916">https://arxiv.org/abs/2205.11916</a></li>
+        <li>Brown et al. (2020), "Language Models are Few-Shot Learners" (GPT-3), NeurIPS 2020. arXiv:2005.14165 — <a href="https://arxiv.org/abs/2005.14165">https://arxiv.org/abs/2005.14165</a></li>
+        <li>Lu et al. (2022), "Fantastically Ordered Prompts and Where to Find Them," ACL 2022. arXiv:2104.08786 — <a href="https://arxiv.org/abs/2104.08786">https://arxiv.org/abs/2104.08786</a></li>
+        <li>Sclar et al. (2024), "Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design," ICLR 2024. arXiv:2310.11324 — <a href="https://arxiv.org/abs/2310.11324">https://arxiv.org/abs/2310.11324</a></li>
+        <li>Mizrahi et al. (2024), "State of What Art? A Call for Multi-Prompt LLM Evaluation," TACL 2024. arXiv:2401.00595 — <a href="https://arxiv.org/abs/2401.00595">https://arxiv.org/abs/2401.00595</a></li>
+      </ul>
+      <p><strong>Section 3 — universal best practices (all three provider guides)</strong></p>
+      <ul>
+        <li>Anthropic, "Prompting best practices." <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices</a></li>
+        <li>OpenAI, "Prompt engineering." <a href="https://developers.openai.com/api/docs/guides/prompt-engineering">https://developers.openai.com/api/docs/guides/prompt-engineering</a></li>
+        <li>Google, "Prompt design strategies" (Gemini API). <a href="https://ai.google.dev/gemini-api/docs/prompting-strategies">https://ai.google.dev/gemini-api/docs/prompting-strategies</a></li>
+      </ul>
+      <p><strong>Section 4 — where to get guidelines</strong></p>
+      <ul>
+        <li>Anthropic prompt-engineering overview. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview</a></li>
+        <li>Anthropic, "Prompting Claude Fable 5" (most recent model; brief instructions over enumerated rulebooks; older prompts can degrade newer models). <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5</a></li>
+        <li>OpenAI prompt-engineering guide. <a href="https://developers.openai.com/api/docs/guides/prompt-engineering">https://developers.openai.com/api/docs/guides/prompt-engineering</a></li>
+        <li>Google Gemini prompt design strategies. <a href="https://ai.google.dev/gemini-api/docs/prompting-strategies">https://ai.google.dev/gemini-api/docs/prompting-strategies</a></li>
+      </ul>
+      <p><strong>Section 5 — metaprompting</strong></p>
+      <ul>
+        <li>Zhou et al. (2022), "Large Language Models Are Human-Level Prompt Engineers" (APE), ICLR 2023. arXiv:2211.01910 — <a href="https://arxiv.org/abs/2211.01910">https://arxiv.org/abs/2211.01910</a></li>
+        <li>Suzgun &amp; Kalai (2024), "Meta-Prompting: Enhancing Language Models with Task-Agnostic Scaffolding." arXiv:2401.12954 — <a href="https://arxiv.org/abs/2401.12954">https://arxiv.org/abs/2401.12954</a></li>
+        <li>Anthropic Console prompt generator &amp; prompt improver. <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-tools">https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-tools</a></li>
+        <li>OpenAI prompt generation ("Generate"). <a href="https://developers.openai.com/api/docs/guides/prompt-generation">https://developers.openai.com/api/docs/guides/prompt-generation</a></li>
+        <li>Google Vertex AI prompt optimizer. <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-optimizer">https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/prompts/prompt-optimizer</a></li>
+      </ul>
+      <p><strong>Section 7 — prompt library</strong></p>
+      <ul>
+        <li>Anthropic Prompt Library. <a href="https://docs.anthropic.com/claude/prompt-library">https://docs.anthropic.com/claude/prompt-library</a></li>
+        <li>OpenAI Cookbook. <a href="https://cookbook.openai.com">https://cookbook.openai.com</a></li>
+        <li>OpenAI, "Version prompts in code" (in the prompt-engineering guide). <a href="https://developers.openai.com/api/docs/guides/prompt-engineering">https://developers.openai.com/api/docs/guides/prompt-engineering</a></li>
+        <li>LaunchDarkly, "Prompt versioning and management." <a href="https://launchdarkly.com/blog/prompt-versioning-and-management/">https://launchdarkly.com/blog/prompt-versioning-and-management/</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
