@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  doc_type: study-guide
+  course_id: mobillity-univ
+  title: "Maximizing Your Learning"
+  review_status: draft
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maximizing Your Learning &ndash; Mobillity</title>
+<style>
+  :root {
+    --bg-base: #0A1929;
+    --bg-container: #0F2238;
+    --bg-code: #071320;
+    --accent-teal: #06B6D4;
+    --accent-teal-soft: rgba(6, 182, 212, 0.12);
+    --success-green: #10B981;
+    --success-green-soft: rgba(16, 185, 129, 0.12);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-strong: #FFFFFF;
+    --binary-blue: #1E40AF;
+  }
+
+  @page { size: A4; margin: 25mm 16mm 18mm 16mm; }
+  @page :first { margin: 18mm 16mm; }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; background-color: var(--bg-base); }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 28px auto;
+    background-color: var(--bg-container);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav-header {
+    position: relative;
+    padding: 44px 40px 36px 40px;
+    background-color: var(--bg-base);
+    background-image:
+      radial-gradient(circle at 70% 50%, rgba(10, 25, 41, 0) 0%, rgba(10, 25, 41, 0.85) 70%, rgba(10, 25, 41, 1) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='200'><g font-family='monospace' font-size='13' fill='%231E40AF' opacity='0.32'><text x='10' y='20'>1 0 1 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 0</text><text x='4' y='40'>0 1 0 0 1 1 0 1 0 1 1 0 1 1 0 0 1 0 1 0</text><text x='14' y='60'>1 1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 1 0</text><text x='2' y='80'>0 0 1 0 1 1 0 0 1 1 0 1 1 0 0 1 0 1 1 0</text><text x='12' y='100'>1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0</text><text x='6' y='120'>0 1 1 0 1 0 0 1 0 1 1 0 1 0 0 1 1 0 1 1</text><text x='10' y='140'>1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 0 1 1 0</text><text x='4' y='160'>0 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 0 0 1 0</text></g></svg>");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, 360px 200px;
+    color: var(--text-strong);
+  }
+
+  .module-tag {
+    display: inline-block;
+    color: var(--accent-teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .nav-header h1 {
+    margin: 0;
+    color: var(--text-strong);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-header .subtitle {
+    margin: 12px 0 0 0;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    font-weight: 400;
+    max-width: 60ch;
+  }
+
+  .brand-marks { margin-top: 28px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .brand-marks span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border: 1px solid rgba(241, 245, 249, 0.18);
+    border-radius: 4px;
+  }
+
+  .content-area { padding: 36px 40px 44px 40px; }
+
+  h2 {
+    color: var(--accent-teal);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  h2:first-of-type { margin-top: 0; }
+
+  p { margin: 0 0 14px 0; color: var(--text-primary); }
+
+  ul, ol { margin: 8px 0 18px 0; padding-left: 24px; }
+  li { margin-bottom: 12px; color: var(--text-primary); }
+  li strong { color: var(--text-strong); }
+  strong { color: var(--text-strong); font-weight: 600; }
+  em { color: var(--text-primary); }
+
+  a { color: var(--accent-teal); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
+  a:hover { color: #22D3EE; }
+
+  code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 0.92em;
+    color: var(--accent-teal);
+    background-color: rgba(6, 182, 212, 0.08);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.9rem; }
+  th, td {
+    text-align: left;
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(241, 245, 249, 0.12);
+    vertical-align: top;
+  }
+  th { color: var(--accent-teal); font-weight: 600; border-bottom: 1px solid rgba(6, 182, 212, 0.35); }
+  td:first-child { color: var(--text-strong); font-weight: 600; white-space: nowrap; }
+
+  .highlight-box {
+    background-color: var(--accent-teal-soft);
+    border-left: 4px solid #06B6D4;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+  .highlight-box p { margin: 0; }
+  .highlight-box .label {
+    display: block; color: var(--accent-teal);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  .success-box {
+    background-color: var(--success-green-soft);
+    border-left: 4px solid #10B981;
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 6px;
+  }
+  .success-box p { margin: 0; }
+  .success-box .label {
+    display: block; color: var(--success-green);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+
+  .why { margin: 0 0 14px 0; }
+  .why strong { color: var(--accent-teal); }
+  .steps-label {
+    display: block;
+    color: var(--text-strong);
+    font-weight: 600;
+    margin: 0 0 2px 0;
+  }
+
+  .reference {
+    margin: 4px 0 8px 0;
+    padding-left: 14px;
+    border-left: 2px solid rgba(6, 182, 212, 0.35);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .reference .ref-label {
+    display: block;
+    color: var(--accent-teal);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .reference em { color: var(--text-secondary); font-style: italic; }
+
+  h1, h2, h3 { break-after: avoid; break-inside: avoid; }
+  .highlight-box, .success-box, table, .reference { break-inside: avoid; page-break-inside: avoid; }
+  .highlight-box .label, .success-box .label { break-after: avoid; page-break-after: avoid; }
+  li { break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+
+  @media (max-width: 720px) {
+    .container { margin: 12px; border-radius: 8px; }
+    .nav-header { padding: 28px 22px 24px 22px; }
+    .nav-header h1 { font-size: 1.7rem; }
+    .content-area { padding: 24px 22px 32px 22px; }
+    table { font-size: 0.82rem; }
+    td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-header" role="banner">
+      <span class="module-tag">Start Here &middot; Study Skills</span>
+      <h1>Maximizing Your Learning</h1>
+      <p class="subtitle">Five evidence-based strategies to get more from this course</p>
+      <div class="brand-marks" role="group" aria-label="Programme branding">
+        <span aria-label="Mobillity">Mobillity</span>
+        <span aria-label="EIT Urban Mobility">EIT Urban Mobility</span>
+        <span aria-label="Co-funded by the European Union">Co-funded by the European Union</span>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <p>Self-paced learning gives you the freedom to choose when, where, and how you learn &mdash; but freedom also comes with responsibility.</p>
+
+      <div class="highlight-box">
+        <span class="label">Why it matters</span>
+        <p>Research in cognitive science, educational psychology, and attention management shows that small, deliberate changes in how you engage with a MOOC can significantly improve comprehension, retention, and focus.</p>
+      </div>
+
+      <p>Below are five practical, evidence-based strategies you can apply immediately while taking this course.</p>
+
+      <h2>1. Use 1.5&ndash;2&times; Playback Selectively (Slow Down Only for Dense Bits)</h2>
+      <p class="why"><strong>Why:</strong> Studies show that moderate speed increases (1.5&times;&ndash;2&times;) do not harm comprehension for most content, and can save time. Slowing down for complex material maximizes understanding.</p>
+      <span class="steps-label">How to implement</span>
+      <ol>
+        <li>Set your default playback speed to 1.5&times; or 2&times;.</li>
+        <li>When you encounter new or difficult concepts, temporarily reduce to 1.0&times;.</li>
+        <li>Before assessments, consider a fast (2&times;) second viewing of key material for reinforcement.</li>
+        <li>Avoid speeds above 2&times; &mdash; research indicates they may reduce comprehension.</li>
+      </ol>
+      <p class="reference">
+        <span class="ref-label">Reference</span>
+        Murphy, J., Sala, G., &amp; Castel, A. D. (2022). The effects of lecture video speed on immediate and delayed comprehension. <em>Applied Cognitive Psychology, 36</em>(1), 77&ndash;85. <a href="https://doi.org/10.1002/acp.3850">https://doi.org/10.1002/acp.3850</a>
+      </p>
+
+      <h2>2. Control the Soundscape (Quiet or Isolate Speech with Headphones/Earplugs)</h2>
+      <p class="why"><strong>Why:</strong> Background noise &mdash; especially speech &mdash; competes for your brain&rsquo;s language-processing resources, lowering comprehension and recall.</p>
+      <span class="steps-label">How to implement</span>
+      <ol>
+        <li>Choose the quietest space available.</li>
+        <li>Use closed-back or noise-cancelling headphones if background noise is unavoidable.</li>
+        <li>Play neutral background noise (white/brown noise) only if it helps you focus.</li>
+      </ol>
+      <p class="reference">
+        <span class="ref-label">Reference</span>
+        Banbury, S. P., &amp; Berry, D. C. (1998). Disruption of office-related tasks by speech and office noise. <em>British Journal of Psychology, 89</em>(3), 499&ndash;517. <a href="https://doi.org/10.1111/j.2044-8295.1998.tb02699.x">https://doi.org/10.1111/j.2044-8295.1998.tb02699.x</a>
+      </p>
+
+      <h2>3. Put the Phone in Another Room</h2>
+      <p class="why"><strong>Why:</strong> Even a silent phone on your desk can reduce available working memory and problem-solving capacity.</p>
+      <span class="steps-label">How to implement</span>
+      <ol>
+        <li>Before study sessions, physically move your phone to another room or closed drawer.</li>
+        <li>Turn off notifications on your computer during learning.</li>
+        <li>Keep it out of sight until your break.</li>
+      </ol>
+      <p class="reference">
+        <span class="ref-label">Reference</span>
+        Ward, A. F., Duke, K., Gneezy, A., &amp; Bos, M. W. (2017). Brain drain: The mere presence of one&rsquo;s own smartphone reduces available cognitive capacity. <em>Journal of the Association for Consumer Research, 2</em>(2), 140&ndash;154. <a href="https://doi.org/10.1086/691462">https://doi.org/10.1086/691462</a>
+      </p>
+
+      <h2>4. Pomodoro-Style Focus with Real Breaks</h2>
+      <p class="why"><strong>Why:</strong> Working in focused intervals with short breaks helps maintain energy, prevent mental fatigue, and sustain attention.</p>
+      <span class="steps-label">How to implement</span>
+      <ol>
+        <li>Set a timer for 25&ndash;50 minutes of focused work.</li>
+        <li>Take a 5&ndash;10 minute break away from your screen.</li>
+        <li>After 3&ndash;4 cycles, take a longer 20&ndash;30 minute break.</li>
+        <li>Use breaks for movement, hydration, or relaxation &mdash; not social media.</li>
+      </ol>
+      <p class="reference">
+        <span class="ref-label">Reference</span>
+        Ariga, A., &amp; Lleras, A. (2011). Brief and rare mental &ldquo;breaks&rdquo; keep you focused: Deactivation and reactivation of task goals preempt vigilance decrements. <em>Cognition, 118</em>(3), 439&ndash;443. <a href="https://doi.org/10.1016/j.cognition.2010.12.007">https://doi.org/10.1016/j.cognition.2010.12.007</a>
+      </p>
+
+      <h2>5. Prefer Generative Notes (Longhand or Disciplined Typing)</h2>
+      <p class="why"><strong>Why:</strong> Taking notes in your own words forces deeper processing, which improves understanding and recall.</p>
+      <span class="steps-label">How to implement</span>
+      <ol>
+        <li>Whether handwriting or typing, avoid verbatim transcription.</li>
+        <li>Summarize ideas in your own words; add headings, diagrams, and questions.</li>
+        <li>At the end of each video, condense notes into a one-page summary.</li>
+      </ol>
+      <p class="reference">
+        <span class="ref-label">Reference</span>
+        Mueller, P. A., &amp; Oppenheimer, D. M. (2014). The pen is mightier than the keyboard: Advantages of longhand over laptop note taking. <em>Psychological Science, 25</em>(6), 1159&ndash;1168. <a href="https://doi.org/10.1177/0956797614524581">https://doi.org/10.1177/0956797614524581</a>
+      </p>
+
+      <div class="success-box">
+        <span class="label">The bottom line</span>
+        <p>Applying even two or three of these strategies consistently can help you retain more, understand better, and finish this MOOC with stronger results.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
