@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f405023c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c7eb84f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7807,16 +7807,16 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1931139a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ef0626af">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="From-a-verified-Colab-analysis-to-a-deck-the-transport-authority-can-read">From a verified Colab analysis to a deck the transport authority can read<a class="anchor-link" href="#From-a-verified-Colab-analysis-to-a-deck-the-transport-authority-can-read">¶</a></h1><p><strong>The question.</strong> We have already measured how often FGC trains run in the evening — one number per line, for the 20:00–24:00 window on a representative weekday. FGC is Ferrocarrils de la Generalitat de Catalunya, the operator behind Barcelona's metro, commuter-rail and funicular lines (there is no bus in this network). Next week that finding has to be presented to the transport authority. How do we turn an analysis that lives in code and charts into a short, professional slide deck — without rebuilding it slide by slide by hand?</p>
-<p><strong>Why it's worth asking.</strong> An analysis is only useful once the people who fund and plan the service can see it. The slow way is to open PowerPoint and retype every number by hand; the fast, reliable way is to keep the verified analysis as the source and have an assistant write the code that assembles the deck for us.</p>
+<p><strong>Why it's worth asking.</strong> An analysis is only useful once the people who fund and plan the service can see it. The slow way is to open PowerPoint and retype every number by hand; the fast, reliable way is to keep the verified analysis as the single source and have an assistant write the code that assembles the deck for us.</p>
 <p><strong>The data.</strong> Each row of the timetable is a scheduled departure — a trip leaving a stop at a given time. From those rows we build one row per line: its evening departures, its departures per hour, and the longest a rider waits between trains in the evening. One honest caveat: these figures describe a single representative weekday and the evening window only, and they were checked against the real feed earlier — here we reuse that verified result, we don't re-audit it.</p>
-<p><strong>The method — five moves.</strong> Structure the message as a pyramid (the answer first, then the reasons), draft a brief for this audience, have the assistant write the code that builds the deck, review what it built, and refine it in a round or two.</p>
+<p><strong>The method — five steps, no slide touched by hand.</strong> We hand the assistant the analysis, ask it for a presentation brief aimed at this audience, ask it for the code that builds the deck from that brief, run the code, and read the finished slides back.</p>
 </div>
 </div>
 </div>
@@ -7855,13 +7855,13 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b9b9407">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9d137efa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Bring-the-verified-finding-in-as-a-table">1. Bring the verified finding in as a table<a class="anchor-link" href="#1.-Bring-the-verified-finding-in-as-a-table">¶</a></h2><p>Before any slides exist, we want the finding itself in front of us as data - not a number we half-remember. The whole point of automating the deck is that every figure on a slide comes straight from this table, so nothing is retyped or rounded by hand. The finding was computed and audited earlier (story-5.4); here we reuse that verified result. It is a short table - one row per line - ranging from a few minutes' wait to a couple of hours.</p>
+<h2 id="1.-Start-from-the-analysis-we-already-have">1. Start from the analysis we already have<a class="anchor-link" href="#1.-Start-from-the-analysis-we-already-have">¶</a></h2><p>The analysis is done and checked. The wrong move now is to copy its numbers into slides one at a time — that is slow, and it is exactly where a figure gets mistyped. The right move is to hand the assistant the analysis itself, so every number on a slide traces straight back to the verified result and nothing is retyped. In a real session you attach the analysis notebook to the assistant as a file; here the verified finding is carried forward as a table so this notebook stands on its own. Before we hand it over, let's read what we are giving.</p>
 </div>
 </div>
 </div>
@@ -7950,28 +7950,30 @@ LINES: 15 | EVENING_TRIPS: 330
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ce511b4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=606a2a21">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-Structure-the-message-as-a-pyramid">2. Structure the message as a pyramid<a class="anchor-link" href="#2.-Structure-the-message-as-a-pyramid">¶</a></h2><p>A table is not a message. Stakeholders in a room want the conclusion first, then the few reasons behind it — the shape Barbara Minto called a pyramid: one main point on top, supported by a small number of reasons, each backed by evidence. Drafting that from memory is where numbers quietly get rounded or overstated, so instead we hand the assistant the table we just built and ask it to structure the finding for us — one headline, three reasons, each tied to a figure in the table. The alternative — walking the audience through the table row by row and hoping they reach the conclusion themselves — is exactly what loses a room. A prompt for that:</p>
+<h2 id="2.-Ask-the-assistant-for-a-presentation-brief">2. Ask the assistant for a presentation brief<a class="anchor-link" href="#2.-Ask-the-assistant-for-a-presentation-brief">¶</a></h2><p>A notebook full of numbers is not a presentation. Before any slides exist, we ask the assistant — with the analysis in hand — to turn the finding into a presentation brief: the plan for the deck, written out. We do not ask vaguely for "a presentation"; a vague ask leaves the assistant to guess who the deck is for and what it should argue, and it comes back as a tidy slide-dump of the table. Instead we spell out the parts that decide how the deck reads — the role it should take, the audience, the goal, the tone and format, and the structure — so the brief comes back aimed at the right room. We ask for the message as a pyramid: the recommendation first, then the evidence, then the action. A prompt for that:</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88a2cde3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a01aa4cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>You're helping me turn a transit-schedule finding into a short presentation for a
-regional transport authority — decision-makers, not analysts. Here's the table I
-just computed: one row per line for a weekday evening (20:00-24:00), showing each
-line's evening departures, its departures per hour, and the longest a rider waits
-between trains in the worst direction, sorted shortest wait to longest.
+<p>Here is my verified analysis of FGC evening service — one row per line for a weekday evening (20:00–24:00): each line's evening departures, departures per hour, and the longest a rider waits between trains in the worst direction. Turn it into a presentation brief.</p>
+<div class="highlight"><pre><span></span><span class="gs">**Role:**</span> You are a transit analyst writing a presentation brief.
+<span class="gs">**Audience:**</span> The regional transport authority — the people who fund and plan service, not analysts.
+<span class="gs">**Goal:**</span> Lead them to a decision on where to add evening service, starting with the lines riders wait longest for.
+<span class="gs">**Context:**</span> The analysis covers FGC evening service on a weekday, 20:00-24:00 — each line's departures and the worst-direction wait between trains. Base every figure on it; invent nothing.
+<span class="gs">**Format &amp; Tone:**</span> A slide-ready brief I can hand straight to a slide builder — about seven slides, one titled point per slide (a bold title and a single supporting line). Executive and plain: no jargon, no long paragraphs. Note the look I want: clean slides, one accent colour, body text large enough to read from the back of a room, and the evening-frequency chart on the evidence slide.
+<span class="gs">**Structure:**</span> Minto's Pyramid — the recommendation-first conclusion, then the supporting evidence, then the action to take.
 
 line  mode        evening_departures  dep_per_hour  wait_min
 FV    funicular   80                  20.0          6
@@ -7989,140 +7991,69 @@ S4    rail        4                   1.0           120
 R5    rail        7                   1.8           240
 R6    rail        6                   1.5           240
 RL1   rail        3                   0.8           240
-
-Structure this as a Minto pyramid I can build a deck around: one plain-language
-headline stating the single main finding, then exactly three supporting reasons
-under it. Ground each reason in a real number from the table — (1) the best line's
-wait versus the worst, and how many times longer that is; (2) how many lines run
-less than one train every two hours after 20:00, and which ones; (3) the gap in
-departures per hour between the best and worst line. Keep every line plain enough
-for a non-technical reader: no schedule jargon, no code — just the message.
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dfc9b3ea">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=198aac07">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Its pyramid comes back like this:</p>
-<div class="highlight"><pre><span></span><span class="gs">**Headline.**</span> Evening service on FGC is uneven — riders on the thinner-served lines wait far longer for a train than riders on the core network.
+<p>The brief comes back like this:</p>
+<div class="highlight"><pre><span></span><span class="gh"># FGC Evening Service — Presentation Brief</span>
+For the regional transport authority. Tone: executive, plain, decision-first. Format: a shareable PowerPoint, seven slides, one titled point per slide — a bold title and a single supporting line. Look: clean white slides, one blue accent, body text readable from the back of the room, and the frequency chart on the evidence slide. Every figure is from the analysis; no new numbers. Structure: Minto's Pyramid — conclusion, then evidence, then action.
 
-<span class="gs">**Reason 1 — the gap is large.**</span> The best-served line runs a train every 6 minutes in the evening; the worst waits 240 minutes — four hours — between trains. That is 40 times longer.
-
-<span class="gs">**Reason 2 — several lines are barely served.**</span> Six lines run less than one train every two hours after 20:00: R53, S3, S4, R5, R6, and RL1.
-
-<span class="gs">**Reason 3 — the imbalance is structural.**</span> The best line manages 20 departures an hour; the worst manages half a departure an hour — one train every two hours.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b01eab2e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Before trusting any of it, we check the pyramid back against the table — and it holds. The best-to-worst gap is real: six minutes against 240, forty times longer. Six lines really do run under one train every two hours. And the departures-per-hour difference — twenty on the best line against half on the worst — is right there in the data. The headline and its three reasons are the spine the slides will now follow.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a1435f80">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.-Draft-the-brief,-one-line-per-slide">3. Draft the brief, one line per slide<a class="anchor-link" href="#3.-Draft-the-brief,-one-line-per-slide">¶</a></h2><p>Now we shape the message for this particular audience. The transport authority decides where to add service, so the deck has to carry them from the finding to a recommendation they can act on — not drown them in method. Before building anything, we ask the assistant to turn the pyramid into a brief: one line per intended slide, in the order we would present them. Settling the brief first is what keeps the deck aimed at the room it is for — it is far cheaper to move a line here than to rebuild a slide later — and every line has to trace back to the headline or one of the reasons, with no new numbers introduced. A prompt for that:</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=688da0d5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>Now turn that pyramid into a slide-by-slide brief for the same transport-authority
-audience — one line per slide, in the order I'd present them. Keep it to seven
-slides: a title slide, an executive-summary slide carrying the headline, an
-evidence slide for the frequency chart, a best-versus-worst slide, a slide naming
-the worst-served lines, a "what it means" slide, and a recommendations slide.
-Every line must come from the headline or one of the three reasons — introduce no
-new numbers — and the recommendation should be something the authority can act on.
-Give it back to me as "Slide N — Heading: one line of content."
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=42855b6d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The brief it proposes:</p>
-<div class="highlight"><pre><span></span><span class="gs">**Slide 1 — FGC Evening Service Frequency:**</span> Weekday evening, 20:00-24:00 — prepared for the transport authority.
-
-<span class="gs">**Slide 2 — Executive summary:**</span> Evening service on FGC is uneven — riders on the thinner-served lines wait far longer for a train than riders on the core network.
-
+<span class="gs">**Slide 1 — FGC Evening Service Frequency:**</span> Weekday evening, 20:00-24:00. Prepared for the transport authority.
+<span class="gs">**Slide 2 — The bottom line:**</span> Evening service is uneven — riders on the thinner-served lines wait far longer for a train than riders on the core network.
 <span class="gs">**Slide 3 — Evidence:**</span> Minutes between evening trains, by line.
-
-<span class="gs">**Slide 4 — Best vs worst:**</span> The best-served line runs every 6 minutes; the worst waits 240 minutes — 40 times longer.
-
-<span class="gs">**Slide 5 — Who is affected:**</span> Six lines run less than one train every two hours after 20:00: R53, S3, S4, R5, R6, and RL1.
-
-<span class="gs">**Slide 6 — What it means:**</span> Riders on the outer rail lines face far longer evening waits than the core network.
-
-<span class="gs">**Slide 7 — Recommendations:**</span> Add evening trips on the lines waiting two hours or more, then re-check after the next timetable change.
+<span class="gs">**Slide 4 — The gap is large:**</span> The best-served line runs every 6 minutes; the worst waits 240 minutes — 40 times longer.
+<span class="gs">**Slide 5 — Who is affected:**</span> Six lines wait two hours or more between evening trains — R53, S3, S4, R5, R6 and RL1.
+<span class="gs">**Slide 6 — What it means:**</span> Riders on the outer rail lines face far longer evening waits than the core metro network.
+<span class="gs">**Slide 7 — Recommendation:**</span> Add evening trips on the lines waiting two hours or more, then re-check after the next timetable change.
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=140674c2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=21fe1cf7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Seven slides, and every line on them traces back to something we already measured — the executive summary is the headline, "best vs worst" and "who is affected" are two of the reasons, and the recommendation follows from them. This short list is the spec the deck gets built from.</p>
+<p>That is a real brief, not a slide-dump: it opens with the recommendation, every slide is one titled point a decision-maker can check, and because we named the audience, the tone and the look, it is detailed enough that a person — or the assistant itself — could build the deck straight from it. Seven slides, every figure traceable to the analysis. This brief is the spec the next step turns into code.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06c26fb4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=124b0d3c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-Build-the-deck-%E2%80%94-and-read-the-first-error">4. Build the deck — and read the first error<a class="anchor-link" href="#4.-Build-the-deck-%E2%80%94-and-read-the-first-error">¶</a></h2><p>With the brief settled, the last decision is the format. python-pptx builds a PowerPoint file you can open, forward and present in a meeting; reveal.js builds an interactive web page that lives at a link. The authority wants a file to open and pass around, so we take the PowerPoint route. This is exactly the point where it is tempting to open PowerPoint and assemble the slides by hand — and that is the move to skip. The brief and the numbers are already here, so instead we have the assistant write the code that turns the brief into slides, and we run it.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5c95f008">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>Using python-pptx, write Python that builds a PowerPoint deck from this brief - one
-slide per line, each with its heading as a bold title and the content below it - puts
-the evening-frequency bar chart on the evidence slide, and saves the file.
+<h2 id="3.-Ask-the-assistant-to-write-the-code-that-builds-the-deck">3. Ask the assistant to write the code that builds the deck<a class="anchor-link" href="#3.-Ask-the-assistant-to-write-the-code-that-builds-the-deck">¶</a></h2><p>Now the format. The module covered several ways to generate slides from code — a PowerPoint file with python-pptx, a web deck with reveal.js, quick Marp markdown, academic Beamer. The choice is driven by the audience: the authority wants a file they can open, forward, and present in a meeting, so we take the PowerPoint route. This is the moment it is tempting to open PowerPoint and lay the slides out by hand — and that is the move to skip. The brief and the numbers already exist, so instead we hand the assistant the brief and ask it to write the python-pptx code that turns it into the deck.</p>
+<p>Using <code>python-pptx</code>, write Python that builds this brief into a PowerPoint deck.</p>
+<div class="highlight"><pre><span></span>Build one slide per titled point: the title in bold with a blue accent, and the supporting line below it in 24-point text. Render the evening-frequency chart from the finding and put it on the evidence slide. Then save the file.
 </pre></div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell celltag_raises-exception" id="cell-id=2b227eb4">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2752f711">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Run-the-code-and-build-the-deck">4. Run the code and build the deck<a class="anchor-link" href="#4.-Run-the-code-and-build-the-deck">¶</a></h2><p>We run the code the assistant wrote. It renders the evening-frequency chart from the finding, then reads the brief we agreed on — written down here as the list of slides so the code can loop over it — lays out one slide per titled point in the look the brief asked for, drops the chart onto the evidence slide, and writes the file.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3e514e36">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8131,120 +8062,38 @@ the evening-frequency bar chart on the evidence slide, and saves the file.
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
-<span class="sd">Build the PowerPoint deck from the agreed brief - first run of the assistant's code.</span>
-<span class="sd">Data: the brief we just settled, written down as data the code can loop over.</span>
+<span class="sd">Build the PowerPoint deck from the brief.</span>
+<span class="sd">Data: the brief (one titled point per slide) + line_table (for the evidence chart).</span>
 <span class="sd">"""</span>
-<span class="c1"># 0. Settings you can change</span>
-<span class="n">DECK</span> <span class="o">=</span> <span class="s2">"story-6.5-fgc-evening-service.pptx"</span>
-
-<span class="c1"># 1. The agreed brief, as (heading, one-line content) per slide</span>
-<span class="n">brief</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">"FGC Evening Service Frequency"</span><span class="p">,</span> <span class="s2">"Weekday evening, 20:00-24:00 — prepared for the transport authority."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Executive summary"</span><span class="p">,</span> <span class="s2">"Evening service on FGC is uneven — riders on the thinner-served lines wait far longer for a train than riders on the core network."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Evidence"</span><span class="p">,</span> <span class="s2">"Minutes between evening trains, by line."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Best vs worst"</span><span class="p">,</span> <span class="s2">"The best-served line runs every 6 minutes; the worst waits 240 minutes — 40 times longer."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Who is affected"</span><span class="p">,</span> <span class="s2">"Six lines run less than one train every two hours after 20:00: R53, S3, S4, R5, R6, and RL1."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"What it means"</span><span class="p">,</span> <span class="s2">"Riders on the outer rail lines face far longer evening waits than the core network."</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"Recommendations"</span><span class="p">,</span> <span class="s2">"Add evening trips on the lines waiting two hours or more, then re-check after the next timetable change."</span><span class="p">),</span>
-<span class="p">]</span>
-
-<span class="c1"># 2. Start an empty presentation</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pptx</span><span class="w"> </span><span class="kn">import</span> <span class="n">Presentation</span>
-<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
-<span class="n">blank</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pptx.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pptx.dml.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">RGBColor</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"Agg"</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># 3. Put each brief line on its own slide: a bold title and the content below it</span>
-<span class="k">for</span> <span class="n">heading</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">brief</span><span class="p">:</span>
-    <span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank</span><span class="p">)</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">text_frame</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">heading</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.6</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">text_frame</span>
-    <span class="n">body</span><span class="o">.</span><span class="n">word_wrap</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">body</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">line</span>
-
-<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"DECK_SAVED:"</span><span class="p">,</span> <span class="n">DECK</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 27</span>
-<span class="ansi-green-fg">     23</span> 
-<span class="ansi-green-fg">     24</span> <span style="color: rgb(95,135,135)"># 3. Put each brief line on its own slide: a bold title and the content below it</span>
-<span class="ansi-green-fg">     25</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> heading, line <span class="ansi-bold" style="color: rgb(0,135,0)">in</span> brief:
-<span class="ansi-green-fg">     26</span>     slide = prs.slides.add_slide(blank)
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">27</span>     title = slide.shapes.add_textbox(Inches(<span class="ansi-green-fg">0.5</span>), Inches(<span class="ansi-green-fg">0.4</span>), Inches(<span class="ansi-green-fg">9</span>), Inches(<span class="ansi-green-fg">1</span>)).text_frame
-<span class="ansi-green-fg">     28</span>     title.text = heading
-<span class="ansi-green-fg">     29</span>     title.paragraphs[<span class="ansi-green-fg">0</span>].runs[<span class="ansi-green-fg">0</span>].font.size = Pt(<span class="ansi-green-fg">32</span>)
-<span class="ansi-green-fg">     30</span>     title.paragraphs[<span class="ansi-green-fg">0</span>].runs[<span class="ansi-green-fg">0</span>].font.bold = <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>
-
-<span class="ansi-red-fg">NameError</span>: name 'Inches' is not defined</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35355ad5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>It doesn't run. The error is short: the name <code>Inches</code> is not defined. Read literally, that is all it is — the code positions text boxes in inches and sets font sizes in points, but it never imported the two helpers that provide those units. This is a missing import, not a wrong approach: the slides were laid out correctly, the code just reached for a tool it hadn't picked up. The fix is one line, not a rewrite.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5fce788b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5.-Fix-the-import-and-build-it-for-real">5. Fix the import and build it for real<a class="anchor-link" href="#5.-Fix-the-import-and-build-it-for-real">¶</a></h2><p>The error told us exactly what to add — the size helpers python-pptx uses for positions and font sizes. We ask the assistant how to solve it, it brings in that one import that is missing, and we run the build again. Nothing else about the approach changes. This is the ordinary rhythm of working with generated code: run it, read what it says, ask for help to the assistant, run it again.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=59438147">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
-<span class="sd">Fix the missing import and build the deck for real, with the evidence chart.</span>
-<span class="sd">Data: brief (slide list) + line_table (for the chart).</span>
-<span class="sd">"""</span>
 <span class="c1"># 0. Settings you can change</span>
 <span class="n">DECK</span> <span class="o">=</span> <span class="s2">"story-6.5-fgc-evening-service.pptx"</span>
 <span class="n">CHART</span> <span class="o">=</span> <span class="s2">"story-6.5-evening-frequency.png"</span>
+<span class="n">ACCENT</span> <span class="o">=</span> <span class="n">RGBColor</span><span class="p">(</span><span class="mh">0x25</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0xEB</span><span class="p">)</span>   <span class="c1"># one blue accent, as the brief asked</span>
+<span class="n">BODY_PT</span> <span class="o">=</span> <span class="mi">24</span>                          <span class="c1"># readable from the back of the room</span>
 
-<span class="c1"># 1. The one-line fix: import the size helpers the code uses</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pptx</span><span class="w"> </span><span class="kn">import</span> <span class="n">Presentation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pptx.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+<span class="c1"># 1. The brief, written down as (title, supporting line) per slide</span>
+<span class="n">brief</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"FGC Evening Service Frequency"</span><span class="p">,</span> <span class="s2">"Weekday evening, 20:00-24:00. Prepared for the transport authority."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"The bottom line"</span><span class="p">,</span> <span class="s2">"Evening service is uneven — riders on the thinner-served lines wait far longer for a train than riders on the core network."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Evidence"</span><span class="p">,</span> <span class="s2">"Minutes between evening trains, by line."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"The gap is large"</span><span class="p">,</span> <span class="s2">"The best-served line runs every 6 minutes; the worst waits 240 minutes — 40 times longer."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Who is affected"</span><span class="p">,</span> <span class="s2">"Six lines wait two hours or more between evening trains: R53, S3, S4, R5, R6 and RL1."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"What it means"</span><span class="p">,</span> <span class="s2">"Riders on the outer rail lines face far longer evening waits than the core metro network."</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Recommendation"</span><span class="p">,</span> <span class="s2">"Add evening trips on the lines waiting two hours or more, then re-check after the next timetable change."</span><span class="p">),</span>
+<span class="p">]</span>
 
-<span class="c1"># 2. Render the evidence chart the deck will embed</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># 2. Render the evidence chart from the finding</span>
 <span class="n">ranked</span> <span class="o">=</span> <span class="n">line_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"evening_wait_min"</span><span class="p">)</span>
-<span class="n">bar_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#10B981"</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="mi">15</span> <span class="k">else</span> <span class="s2">"#F59E0B"</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="mi">120</span> <span class="k">else</span> <span class="s2">"#DC2626"</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">ranked</span><span class="o">.</span><span class="n">evening_wait_min</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#10B981"</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;=</span> <span class="mi">15</span> <span class="k">else</span> <span class="s2">"#F59E0B"</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="mi">120</span> <span class="k">else</span> <span class="s2">"#DC2626"</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">ranked</span><span class="o">.</span><span class="n">evening_wait_min</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ranked</span><span class="o">.</span><span class="n">route_short_name</span><span class="p">,</span> <span class="n">ranked</span><span class="o">.</span><span class="n">evening_wait_min</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">bar_colors</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ranked</span><span class="o">.</span><span class="n">route_short_name</span><span class="p">,</span> <span class="n">ranked</span><span class="o">.</span><span class="n">evening_wait_min</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Minutes between trains - worst direction, evening 20:00-24:00"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"FGC evening service is uneven by line"</span><span class="p">)</span>
@@ -8254,22 +8103,26 @@ the evening-frequency bar chart on the evidence slide, and saves the file.
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">CHART</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 
-<span class="c1"># 3. Build the slides, dropping the chart onto the Evidence slide</span>
+<span class="c1"># 3. Build one slide per titled point, in the look the brief asked for</span>
 <span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
 <span class="n">blank</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slide_layouts</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">heading</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">brief</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">title_text</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">brief</span><span class="p">:</span>
     <span class="n">slide</span> <span class="o">=</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">blank</span><span class="p">)</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.4</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">text_frame</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">heading</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.6</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">text_frame</span>
+    <span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">title_text</span>
+    <span class="n">title_run</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">title_run</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">title_run</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">title_run</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">rgb</span> <span class="o">=</span> <span class="n">ACCENT</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_textbox</span><span class="p">(</span><span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">1.7</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">text_frame</span>
     <span class="n">body</span><span class="o">.</span><span class="n">word_wrap</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">body</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="k">if</span> <span class="n">heading</span> <span class="o">==</span> <span class="s2">"Evidence"</span><span class="p">:</span>
-        <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">CHART</span><span class="p">,</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.4</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">Inches</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
-<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
+    <span class="n">body</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="n">BODY_PT</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title_text</span> <span class="o">==</span> <span class="s2">"Evidence"</span><span class="p">:</span>
+        <span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="n">CHART</span><span class="p">,</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">2.6</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">Inches</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 
+<span class="c1"># 4. Save the deck</span>
+<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"CHART_SAVED:"</span><span class="p">,</span> <span class="n">CHART</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"DECK_SAVED:"</span><span class="p">,</span> <span class="n">DECK</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"SLIDE_COUNT:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="o">.</span><span class="n">_sldIdLst</span><span class="p">))</span>
@@ -8294,82 +8147,46 @@ SLIDE_COUNT: 7
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=67e62ea0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9250a31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This time it saves. Seven slides, the chart embedded on the evidence slide, every number carried straight from the verified table — nothing retyped. The deck was assembled entirely by code from the brief, which is what lets us trust the figures on it.</p>
+<p>It saves cleanly: seven slides, the evidence chart embedded on its slide, every number carried straight from the verified table — nothing retyped. The deck was assembled entirely by code from the brief, which is exactly what lets us trust the figures on it.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=77de47e9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=64aabfb8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-Review-what-the-code-built">6. Review what the code built<a class="anchor-link" href="#6.-Review-what-the-code-built">¶</a></h2><p>A saved file is not a finished deck. Generated code can quietly drop a slide, repeat one, or skip the chart, and it is far cheaper to catch that here than in front of the authority. So before anyone sees it, we open the deck back up and check it against the brief: are all the slides there, in order; is the chart actually embedded; does the headline sit on the summary slide. The check takes a few seconds, and it is the habit that keeps a generated deck honest.</p>
+<h2 id="5.-Read-the-finished-presentation">5. Read the finished presentation<a class="anchor-link" href="#5.-Read-the-finished-presentation">¶</a></h2><p>The last step is to look at what we built the way the audience will. Generated code can quietly drop a slide, repeat one, or skip the chart, and it is far cheaper to catch that here than in front of the authority. So we open the saved deck and read its slide titles back, in order, to confirm the deck matches the brief — the same quick check you would give any generated file before it leaves your screen.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c1bb6de">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7.-Refine-it-in-one-short-round">7. Refine it in one short round<a class="anchor-link" href="#7.-Refine-it-in-one-short-round">¶</a></h2><p>The first deck is a strong draft, not the finished article — that is normal for anything an assistant produces, slides included. So we look it over the way the audience will and send back small, specific fixes. For example, you might find the recommendations read too small from the back of a room and ask for that slide's text enlarged, or want the chart reordered, or a line tightened. Each is one short instruction and a re-run, not a rebuild. Here we make just that one change and save a fresh copy.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c33e820a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div class="highlight"><pre><span></span>For example: the recommendations slide is hard to read from the back of the room -
-make its body text 24 point and save the deck as a new version.
-</pre></div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3effa5d0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1238c981">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="sd">"""</span>
-<span class="sd">One refinement round: make the recommendations readable from the back of the room.</span>
-<span class="sd">Data: the saved deck; we re-save a new version rather than rebuild.</span>
+<span class="sd">Read the finished deck back: the slides it built, in order.</span>
+<span class="sd">Data: the saved .pptx.</span>
 <span class="sd">"""</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pptx</span><span class="w"> </span><span class="kn">import</span> <span class="n">Presentation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pptx.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pt</span>
 
-<span class="c1"># 0. Settings you can change</span>
-<span class="n">REVISED</span> <span class="o">=</span> <span class="s2">"story-6.5-fgc-evening-service-v2.pptx"</span>
-<span class="n">BIGGER_PT</span> <span class="o">=</span> <span class="mi">24</span>
-
-<span class="c1"># 1. Find the recommendations slide and enlarge only its body text</span>
-<span class="n">prs</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">slide</span> <span class="ow">in</span> <span class="n">prs</span><span class="o">.</span><span class="n">slides</span><span class="p">:</span>
-    <span class="n">shapes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">shapes</span> <span class="ow">and</span> <span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">has_text_frame</span> <span class="ow">and</span> <span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text_frame</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">"Recommendations"</span><span class="p">:</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text_frame</span>          <span class="c1"># the second box on the slide is the body</span>
-        <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">runs</span><span class="p">:</span>
-            <span class="n">run</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="n">BIGGER_PT</span><span class="p">)</span>
-<span class="n">prs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">REVISED</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"REVISED_SAVED:"</span><span class="p">,</span> <span class="n">REVISED</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"RECOMMENDATIONS_PT:"</span><span class="p">,</span> <span class="n">BIGGER_PT</span><span class="p">)</span>
+<span class="n">deck</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">(</span><span class="n">DECK</span><span class="p">)</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">slide</span><span class="o">.</span><span class="n">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text_frame</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">slide</span> <span class="ow">in</span> <span class="n">deck</span><span class="o">.</span><span class="n">slides</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">titles</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Slide </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">SLIDES_MATCH_BRIEF:"</span><span class="p">,</span> <span class="n">titles</span> <span class="o">==</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">brief</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -8382,33 +8199,28 @@ make its body text 24 point and save the deck as a new version.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>REVISED_SAVED: story-6.5-fgc-evening-service-v2.pptx
-RECOMMENDATIONS_PT: 24
+<pre>Slide 1: FGC Evening Service Frequency
+Slide 2: The bottom line
+Slide 3: Evidence
+Slide 4: The gap is large
+Slide 5: Who is affected
+Slide 6: What it means
+Slide 7: Recommendation
+
+SLIDES_MATCH_BRIEF: True
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9bd979fe">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d29e17b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The revised deck saves with the recommendations text enlarged. In practice it is two or three rounds like this — a small instruction, a re-run — and then the deck is ready to present. At no point did we rebuild it from scratch.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68debf53">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="8.-Read-the-answer">8. Read the answer<a class="anchor-link" href="#8.-Read-the-answer">¶</a></h2><p>We started with a finding that lived in code and charts — FGC's evening service is uneven, with the outer lines waiting up to four hours between trains — and we needed it in front of the transport authority next week. Running the five moves, we got there without rebuilding anything by hand: we structured the finding as a pyramid, wrote a brief for the audience, had the assistant write the code that built a seven-slide deck with the evidence chart, reviewed it, and refined it in a round. The analysis never left its source, and every number on every slide came straight from the verified table.</p>
-<p>The honest part is the rhythm, not magic. The first code errored and we fixed it in one line; the first deck was a draft we refined. But that whole path — from a screen full of code to a deliverable someone can act on — is one you can repeat for any analysis that has to leave your screen and reach the people who decide what happens next.</p>
+<p>And there is the deck: seven slides, in the order the brief laid out, headed by the recommendation and carrying the evidence chart. We started with a finding that lived in code and charts — FGC evening service is uneven, with the outer rail lines waiting up to four hours between trains — due in front of the transport authority next week. By handing the assistant the analysis, asking it for a brief, asking it for the code, and running that code, we turned it into a deck the authority can open, with every figure carried straight from the verified analysis and no slide touched by hand. That is the whole path, and it is the one to reuse for any analysis that has to leave your screen and reach the people who decide what happens next.</p>
 </div>
 </div>
 </div>
