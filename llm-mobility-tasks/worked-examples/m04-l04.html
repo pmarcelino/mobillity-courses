@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instructing the assistant to draft only from supplied material — worked example</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  color: #16212e;
+  background: #fff;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.25; }
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  border-top: 1px solid #d8d8e0;
+  padding-top: 1.2rem;
+}
+h1, h2, h3, .step {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+.box {
+  background: #f2f5f8;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+}
+.box h3 { margin-top: 0.2rem; font-size: 1rem; }
+.step {
+  display: inline-block;
+  background: #003f7f;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-top: 2rem;
+}
+.thinking {
+  background: #fff3ed;
+  border-left: 4px solid #ff7f50;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+}
+.thinking .label {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b34a22;
+}
+.thinking p { font-style: italic; margin: 0.5rem 0 0; }
+pre.prompt {
+  background: #062a4a;
+  color: #33ffff;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #003f7f;
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.2rem;
+  color: #333;
+}
+sup a { text-decoration: none; color: #003f7f; }
+.refs h2 { border-top: none; margin-top: 2.6rem; }
+.refs ol { padding-left: 1.4rem; }
+.refs li { margin-bottom: 0.6rem; }
+ul.takeaways li { margin-bottom: 0.7rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid #d8d8e0;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f2f5f8; }
+.brand {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #003f7f;
+  margin: 0 0 1.6rem;
+}
+</style>
+</head>
+<body>
+<p class="brand">MobiLLITY</p>
+<h1>Instructing the assistant to draft only from supplied material — worked example</h1>
+
+<div class="box">
+  <h3>After working through this example you will be able to</h3>
+  <ul>
+    <li>Write a grounding instruction that names a source document, forbids outside knowledge and inference, and requires an explicit &#x27;not available&#x27; response when the source is silent on a point.</li>
+    <li>Apply that instruction to a real Horizon Europe call text before drafting a briefing paragraph from it.</li>
+    <li>Check a drafted paragraph clause by clause against a source document and produce a verification table recording a supported/not-supported verdict for every factual claim.</li>
+    <li>Identify which claims in an ungrounded draft were fabricated and explain why a grounding instruction would have forced them to &#x27;not available&#x27; instead.</li>
+  </ul>
+</div>
+
+<p>The previous lecture ended by promising exactly this next step: paste a real call text, write a grounding instruction from the template, draft a section, and check every figure, name and commitment against the source material. That is the exercise here.</p>
+<p>You work in the mobility unit of a local authority. Your manager has asked for a short briefing paragraph on a Horizon Europe call your department is considering — HORIZON-CL5-2023-D6-01-06, on zero-emission e-commerce and freight delivery — specifically what the call requires from local authorities as partners.</p>
+<p>A colleague already tried this with an assistant using a soft instruction — &#x27;please summarise what this call wants from local authorities using the text I&#x27;ve pasted&#x27; — and the result reads fluently, but there is no way to tell at a glance whether every figure, name and commitment in it actually appears in the call text. That draft needs to be checked clause by clause before anything from it reaches an official document.</p>
+<blockquote><p>Colleague&#x27;s draft paragraph: &#x27;This topic requires local authorities to act as full beneficiaries and formal signatories of the grant agreement, not just associated partners. Proposals must include an intersectional consumer-behaviour analysis and must build a toolset developed with and for local authorities. Projects are also expected to cooperate with the CIVITAS network of cities, and local authorities are required to co-fund at least 10% of the project budget from municipal sources.&#x27;</p></blockquote>
+
+<p class="step">Step 1 — Read the call text itself</p>
+<p>Before writing anything, the call text at CORDIS was opened directly and read for the three points the manager&#x27;s brief turns on: the role required of local authorities, any named consumer-behaviour analysis requirement, and any reference to the CIVITAS network.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<blockquote><p>Test with selected retailers and representative customers, and in collaboration with relevant local authorities, the proposed guidelines to visualise the advanced information on emissions and the zero-emission delivery and return options towards consumers.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<blockquote><p>Develop recommendations and a toolset with and for local authorities to accelerate the adoption of zero-emission delivery and return options and choices.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<blockquote><p>Integrate an intersectional analysis of consumers&#x27; gender, age, and socioeconomic status to account better for the customers&#x27; variety of expectations and motivations and develop solutions which cater for all social groups.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<blockquote><p>Cooperation with the network of cities CIVITAS should be planned as appropriate.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<p>Nowhere on the page does the text discuss beneficiary or associated-partner legal status, grant-agreement signatory status, or any co-funding percentage for local authorities.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p class="step">Step 2 — Write the grounding instruction</p>
+<div class="thinking"><span class="label">Thinking out loud</span><p>The pattern from the lecture has four parts that all have to be present: name the exact source, forbid outside knowledge and common sense, forbid inference, and require an explicit &#x27;not available&#x27; response for anything the text doesn&#x27;t cover. A soft &#x27;summarise using this text&#x27; request satisfies none of those four, which is exactly what let the colleague&#x27;s draft invent details.</p></div>
+<pre class="prompt">Using only the text of Horizon Europe call topic HORIZON-CL5-2023-D6-01-06 as published on CORDIS (https://cordis.europa.eu/programme/id/HORIZON_HORIZON-CL5-2023-D6-01-06), which I have pasted below, draft a short paragraph describing what the call requires from local authorities as partners.
+
+Do not use any outside knowledge of Horizon Europe funding rules, general Work Programme conditions, consortium-composition conventions, or common-sense assumptions about how EU grants normally operate. Do not infer, extrapolate, or fill gaps with plausible-sounding detail that is not explicitly written in the pasted text — even if it would normally be true of Horizon Europe projects.
+
+For every specific fact you state (a role, a percentage, a named methodology, a named organisation or network), you must be able to point to the exact sentence in the pasted text that supports it.
+
+If the pasted text does not explicitly address something (e.g. the legal/beneficiary status of local authorities, co-funding percentages, or any other detail), you must write &#x27;not available in the call text&#x27; for that point rather than guessing, generalising, or omitting it silently.</pre>
+<p class="step">Step 3 — Check the colleague&#x27;s draft clause by clause</p>
+<p>With the source passages in hand, each factual claim in the colleague&#x27;s draft was checked against them one at a time, the same discipline used to spot-check an extracted table row by row — here applied sentence by sentence to a drafted paragraph.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<table><thead><tr><th>#</th><th>Claim in draft</th><th>Verdict</th><th>What the call text actually says</th></tr></thead><tbody><tr><td>1</td><td>local authorities to act as full beneficiaries and formal signatories of the grant agreement, not just associated partners</td><td>Not supported</td><td>The call text never discusses beneficiary status, signatory status, or associated-partner status for local authorities anywhere on the page.</td></tr><tr><td>2</td><td>Proposals must include an intersectional consumer-behaviour analysis</td><td>Supported</td><td>&quot;Integrate an intersectional analysis of consumers&#x27; gender, age, and socioeconomic status to account better for the customers&#x27; variety of expectations and motivations and develop solutions which cater for all social groups.&quot;</td></tr><tr><td>3</td><td>must build a toolset developed with and for local authorities</td><td>Supported</td><td>&quot;Develop recommendations and a toolset with and for local authorities to accelerate the adoption of zero-emission delivery and return options and choices.&quot;</td></tr><tr><td>4</td><td>Projects are also expected to cooperate with the CIVITAS network of cities</td><td>Supported, with a softer nuance</td><td>&quot;Cooperation with the network of cities CIVITAS should be planned as appropriate.&quot; — conditional wording, not the draft&#x27;s firmer &quot;are expected to,&quot; but the substantive link to CIVITAS is genuine.</td></tr><tr><td>5</td><td>local authorities are required to co-fund at least 10% of the project budget from municipal sources</td><td>Not supported</td><td>No sentence anywhere in the call text mentions co-funding, budget shares, or municipal financial contributions.</td></tr></tbody></table>
+<p class="step">Step 4 — Name the fabrication</p>
+<p>The 10% municipal co-funding requirement is fabricated — it appears nowhere in the call text — and, together with the beneficiary/signatory claim, it is exactly what the grounding instruction&#x27;s rule to write &#x27;not available&#x27; when the text is silent would have blocked before it ever reached the manager&#x27;s desk.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+
+<h2>Takeaways</h2>
+<ul class="takeaways">
+  <li>A grounding instruction must do four things together: name the exact source, forbid outside knowledge and common sense, forbid inference, and require an explicit &#x27;not available&#x27; response when the source is silent — a soft &#x27;summarise using this text&#x27; request does none of these.</li>
+  <li>The instruction changes what the assistant is willing to output; it does not guarantee the assistant read the source correctly, so the drafted paragraph still needs the same clause-by-clause verification against the source as any other assistant output.</li>
+  <li>Verifying a drafted paragraph means checking every factual claim individually against the source and recording a supported/not-supported verdict, not just spot-checking the claims that look suspicious.</li>
+  <li>In this call text, the toolset, the intersectional consumer-behaviour analysis, and the CIVITAS cooperation were all genuinely supported; the beneficiary/signatory status and the 10% co-funding figure were both fabricated additions that a grounding instruction would have forced to &#x27;not available&#x27;.</li>
+</ul>
+
+<div class="refs">
+<h2>References</h2>
+<ol>
+  <li id="ref-1">European Commission. “Zero-emission e-commerce and freight delivery and return choices by retailers, consumers and local authorities (HORIZON-CL5-2023-D6-01-06).” CORDIS, n.d.. <a href="https://cordis.europa.eu/programme/id/HORIZON_HORIZON-CL5-2023-D6-01-06">https://cordis.europa.eu/programme/id/HORIZON_HORIZON-CL5-2023-D6-01-06</a></li>
+</ol>
+</div>
+</body>
+</html>

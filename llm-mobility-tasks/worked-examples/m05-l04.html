@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scoring a draft against an explicit rubric — worked example</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  color: #16212e;
+  background: #fff;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.25; }
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  border-top: 1px solid #d8d8e0;
+  padding-top: 1.2rem;
+}
+h1, h2, h3, .step {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+.box {
+  background: #f2f5f8;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+}
+.box h3 { margin-top: 0.2rem; font-size: 1rem; }
+.step {
+  display: inline-block;
+  background: #003f7f;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-top: 2rem;
+}
+.thinking {
+  background: #fff3ed;
+  border-left: 4px solid #ff7f50;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+}
+.thinking .label {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b34a22;
+}
+.thinking p { font-style: italic; margin: 0.5rem 0 0; }
+pre.prompt {
+  background: #062a4a;
+  color: #33ffff;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #003f7f;
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.2rem;
+  color: #333;
+}
+sup a { text-decoration: none; color: #003f7f; }
+.refs h2 { border-top: none; margin-top: 2.6rem; }
+.refs ol { padding-left: 1.4rem; }
+.refs li { margin-bottom: 0.6rem; }
+ul.takeaways li { margin-bottom: 0.7rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid #d8d8e0;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f2f5f8; }
+.brand {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #003f7f;
+  margin: 0 0 1.6rem;
+}
+</style>
+</head>
+<body>
+<p class="brand">MobiLLITY</p>
+<h1>Scoring a draft against an explicit rubric — worked example</h1>
+
+<div class="box">
+  <h3>After working through this example you will be able to</h3>
+  <ul>
+    <li>Score a draft against a funder&#x27;s explicit rubric bands and thresholds instead of relying on a chat assistant&#x27;s unprompted impression</li>
+    <li>Recognise when a chat context is contaminated by prior praise and start a fresh context for critical scoring</li>
+    <li>Run a revise-then-rescore loop that checks whether a flagged weakness was structurally closed, not just rephrased</li>
+    <li>Write up an assistant-derived score for a manager while flagging it as a prediction, not a certified verdict</li>
+  </ul>
+</div>
+
+<p>You work in your city&#x27;s EU projects office. Your colleague Marta has drafted the Impact section for a Horizon Europe RIA bid on zero-emission last-mile freight delivery, due to the coordinator this Friday.</p>
+<p>Marta already pasted her draft into her usual drafting chat this morning and asked &#x27;what do you think of this?&#x27; The assistant replied that it was compelling and well-argued, with clearly articulated outcomes and strong consortium positioning. No rubric was involved. Marta forwarded that chat log and the draft excerpt, feeling good about it.</p>
+<blockquote><p>This project will deliver transformative impact for urban freight decarbonisation across Europe. Our zero-emission delivery hubs will make cities cleaner and more liveable. Businesses and citizens alike will benefit from reduced congestion and improved air quality. The consortium is uniquely positioned to lead this transition, drawing on strong prior experience. We are confident that the results will exceed expectations and set a new benchmark for the sector.</p></blockquote>
+<p>Your manager wants a rubric-based check before this goes to the coordinator, and a written note on whether the Impact criterion is actually above threshold — the team has been burned before submitting sections that &#x27;felt strong&#x27; but scored low with real evaluators.</p>
+
+<p class="step">Step 1 — Get the rubric&#x27;s own wording, not a paraphrase</p>
+<p>Before scoring anything, I pulled the actual European Commission expert scoring template rather than trusting anyone&#x27;s summary of it. The document defines the bands and thresholds precisely.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<blockquote><p>1 — Poor. The criterion is inadequately addressed, or there are serious inherent weaknesses. 2 — Fair. The proposal broadly addresses the criterion, but there are significant weaknesses. 3 — Good. The proposal addresses the criterion well, but a number of shortcomings are present. 4 — Very Good. The proposal addresses the criterion very well, but a small number of shortcomings are present. 5 — Excellent. The proposal successfully addresses all relevant aspects of the criterion. Any shortcomings are minor.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<blockquote><p>The threshold for the individual criteria is 3. The overall threshold, applying to the sum of the 3 individual scores, is 10 points.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<p>The template applies different thresholds to two-stage calls (4 per criterion). This is a standard single-stage submission, so those figures don&#x27;t apply here — the 3-per-criterion / 10-overall rule is the one that governs.</p>
+<p class="step">Step 2 — Check why a fresh chat matters before running any score</p>
+<p>Marta&#x27;s morning chat had spent the week helping write the section, then praised it with no rubric attached — exactly the drafting-partner bias that a documented separation technique warns about: keep an encouraging drafting chat and a separate, unprimed scoring chat apart.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<blockquote><p>Be brutally honest—you have no ego or ownership bias, so you can be more objective than human evaluators.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>So I did not reuse Marta&#x27;s chat. I opened a brand-new, empty chat with no memory of her draft or its praise, and used that chat for every scoring pass below.</p>
+<p class="step">Step 3 — Score the original excerpt against the rubric wording</p>
+<pre class="prompt">Here is the Horizon Europe expert scoring template&#x27;s Impact criterion, its 0-5 band definitions, and the stated thresholds [pasted verbatim]. Here is a draft Impact-section excerpt [pasted]. Score the excerpt against each Impact sub-aspect using only the rubric wording. Be critical: do not default to a favourable score, cite the specific text that earns or loses marks, and justify each score against the band definitions.</pre>
+<p>The Impact criterion has two sub-aspects in the template: credibility of the pathways to the expected outcomes and impacts, and the suitability and quality of the dissemination/exploitation and communication measures. Scored against those, the assistant returned two very low results.</p>
+<table><thead><tr><th>Impact sub-aspect (rubric wording)</th><th>Score</th><th>Reason</th></tr></thead><tbody><tr><td>Credibility of the pathways to achieve the expected outcomes and impacts</td><td>1/5</td><td>Asserts outcomes (cleaner cities, reduced congestion, improved air quality, results that &#x27;exceed expectations&#x27;) but supplies no mechanism, baseline, or target figures connecting the hubs to those outcomes — matches band 1, not band 3&#x27;s &#x27;addresses the criterion well&#x27;</td></tr><tr><td>Suitability and quality of dissemination/exploitation measures, including communication activities</td><td>0/5</td><td>Nothing in the excerpt mentions dissemination, exploitation, or communication activities at all — matches band 0, &#x27;fails to address the criterion... due to missing or incomplete information&#x27;</td></tr></tbody></table>
+<p>The template gives one combined Impact score rather than two separate ones; combining the two weak sub-aspects, the assistant&#x27;s overall Impact score for this excerpt was 1/5 — well below the individual-criterion threshold of 3, and since Impact is one of three summed criteria against an overall threshold of 10, a 1 here makes overall failure very likely unless the other two criteria are both close to 5.</p>
+<p class="step">Step 4 — Revise only the flagged weakness</p>
+<pre class="prompt">Rewrite only the Impact text above to add a credible pathway (named pilot cities, quantified targets, a baseline/monitoring mechanism, reference to prior consortium pilot data) and concrete dissemination/exploitation measures (toolkit release, policy engagement, a named exploitation route, communication channels with KPIs). Leave everything else in the proposal untouched.</pre>
+<p>I deliberately asked for a structural fix — a pathway and a dissemination/exploitation plan — rather than for stronger-sounding language, since the two scores above were driven by missing content, not weak tone.</p>
+<p class="step">Step 5 — Re-score the revised excerpt in another fresh chat</p>
+<p>I opened a second new chat — again with no history of the original excerpt, the revision request, or any praise — and ran the identical rubric-scoring prompt from Step 3 on the revised text.</p>
+<p>The pathway sub-aspect rose to roughly 3-4/5: the revision now names pilot sites, quantified targets, and a monitoring mechanism, though risks and barriers to uptake are still thin. The dissemination/exploitation sub-aspect rose to roughly 4/5: concrete channels, an exploitation lead, and KPIs are now present. Combined, the Impact estimate moved to roughly 3/5 — at the individual-criterion threshold, not comfortably above it.</p>
+<p>What changed between the two rounds was the presence of pathway logic and a dissemination/exploitation structure that simply did not exist before — not softer or more confident phrasing. The named partners and figures I inserted were illustrative placeholders used only to test whether the structural gap could be closed; Marta&#x27;s team still needs to replace them with real project data before submission.</p>
+<p class="step">Step 6 — Write the note for the manager</p>
+<p>The deliverable is a short note giving the manager the per-criterion score and reason tied to rubric wording, the threshold comparison, the chat-context explanation, what changed across the revise/rescore loop, and an explicit statement that the assistant&#x27;s score is a prediction, not a certified grade, and cannot itself be cited as evidence of Impact quality in the submission.</p>
+
+<h2>Takeaways</h2>
+<ul class="takeaways">
+  <li>A rubric turns &#x27;is this good?&#x27; into a structured per-criterion judgment: paste the funder&#x27;s exact bands and thresholds plus the draft, and require scores tied to specific text, not a vague impression</li>
+  <li>Because sycophancy carries across a chat&#x27;s history, rubric scoring must run in a fresh chat with no prior praise in context, using an explicit &#x27;be critical&#x27; instruction — reusing the drafting chat produces generous scores regardless of actual quality</li>
+  <li>A revise-and-rescore loop must check that the specific rubric weakness was structurally closed (missing pathway, missing dissemination plan) in a second fresh chat — not that the rewritten text merely sounds more confident</li>
+  <li>An assistant&#x27;s rubric score is a prediction shaped by the rubric text and draft, not a certified verdict — it tells you where a real evaluator is likely to push back, but it cannot be cited as evidence of quality in the actual submission</li>
+</ul>
+
+<div class="refs">
+<h2>References</h2>
+<ol>
+  <li id="ref-1">European Commission. “EU Grants: Evaluation Form (HE RIA and IA), V4.0 – 12.11.2025.” European Commission — Funding &amp; Tenders Portal, 2025-11-12. <a href="https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/ef/ef_he-ria-ia_en.pdf">https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/ef/ef_he-ria-ia_en.pdf</a></li>
+  <li id="ref-2">Jeremy Utley. “Stop Fighting AI Glazing.” Jeremy Utley (blog), 2025-07-28. <a href="https://www.jeremyutley.com/blog/stop-fighting-ai-glazing">https://www.jeremyutley.com/blog/stop-fighting-ai-glazing</a></li>
+</ol>
+</div>
+</body>
+</html>
