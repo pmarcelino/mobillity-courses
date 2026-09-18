@@ -1,9 +1,14 @@
 # From Chatbot to Trusted Workflow: A Document-Production Course for Municipal Mobility Officers
 
-Worked examples of this course: self-contained HTML pages, one per
-worked-example lecture, embedded in the course LMS. Each one walks a real
+Learner-facing pages of this course, embedded in the course LMS: the
+welcome & course guide, and the worked examples — self-contained HTML
+pages, one per worked-example lecture. Each worked example walks a real
 task on real, cited sources; every citation was re-fetched and checked
 before the page was published.
+
+## Course guide
+
+- [Welcome & Course Guide](./guide.html)
 
 ## Worked examples
 
