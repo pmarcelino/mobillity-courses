@@ -12,8 +12,10 @@ before the page was published.
 
 ## Worked examples
 
+- [m03-l08](./worked-examples/m03-l08.html) — Extracting facts into a structured table with page citations — worked example
 - [m04-l04](./worked-examples/m04-l04.html) — Instructing the assistant to draft only from supplied material — worked example
 - [m05-l04](./worked-examples/m05-l04.html) — Scoring a draft against an explicit rubric — worked example
+- [m06-l03](./worked-examples/m06-l03.html) — Rewriting for plain language without changing facts — worked example
 
 ## License
 
