@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recording provenance and trustworthiness for each source — worked example</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  color: #16212e;
+  background: #fff;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.25; }
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  border-top: 1px solid #d8d8e0;
+  padding-top: 1.2rem;
+}
+h1, h2, h3, .step {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+.box {
+  background: #f2f5f8;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+}
+.box h3 { margin-top: 0.2rem; font-size: 1rem; }
+.step {
+  display: inline-block;
+  background: #003f7f;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-top: 2rem;
+}
+.thinking {
+  background: #fff3ed;
+  border-left: 4px solid #ff7f50;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+}
+.thinking .label {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b34a22;
+}
+.thinking p { font-style: italic; margin: 0.5rem 0 0; }
+pre.prompt {
+  background: #062a4a;
+  color: #33ffff;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #003f7f;
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.2rem;
+  color: #333;
+}
+sup a { text-decoration: none; color: #003f7f; }
+.refs h2 { border-top: none; margin-top: 2.6rem; }
+.refs ol { padding-left: 1.4rem; }
+.refs li { margin-bottom: 0.6rem; }
+ul.takeaways li { margin-bottom: 0.7rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid #d8d8e0;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f2f5f8; }
+.brand {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #003f7f;
+  margin: 0 0 1.6rem;
+}
+</style>
+</head>
+<body>
+<p class="brand">MobiLLITY</p>
+<h1>Recording provenance and trustworthiness for each source — worked example</h1>
+
+<div class="box">
+  <h3>After working through this example you will be able to</h3>
+  <ul>
+    <li>Run a source through the TRAAP prompt structure to produce an assistant trust judgement, including at least one flagged backing link you open and check yourself.</li>
+    <li>Apply the three UBC verification moves — Compare, Check citations for hallucinations, Confirm — to independently test that judgement against the primary document.</li>
+    <li>Write a defensible one-line evidence-file entry recording what a source says, where it came from, and why it is trustworthy.</li>
+    <li>Recognise when a document&#x27;s official appearance is not a substitute for opening it and checking specific claims against the text.</li>
+  </ul>
+</div>
+
+<p>You are a mobility-planning officer in a city council&#x27;s Active Travel unit. Last time, you learned that an assistant produces citations by predicting plausible references, not by checking whether they exist, and that you verify by searching the source directly and opening it to confirm the claim is actually there. Today that verification gets built into a complete evidence-file entry.</p>
+<p>Your manager has asked for a short briefing-note claim: that removing or scaling back a temporary cycle lane during its trial period is inconsistent with UK Department for Transport practice, and that consultation-period data is the right basis for such decisions. A deep-research assistant run on this question surfaced, among other sources, a Brighton &amp; Hove City Council officer report on the Old Shoreham Road Active Travel Fund scheme. Before this goes near your manager, you need an evidence-file entry for that source that survives her question: where did this come from, and how do you know it&#x27;s trustworthy?</p>
+<p>Two colleague emails have been circulating describing what the report supposedly contains. Email #1 describes it as &quot;a 2021 Brighton &amp; Hove committee report recommending REMOVAL of the Old Shoreham Road cycle lane after the Tranche 2 consultation, dated around August 2021.&quot; Email #2 adds that &quot;this report says the consultation showed over 75% of respondents felt unsafe using the temporary lane during the day.&quot; Both claims must be checked against the primary document itself before the line is finalised.</p>
+
+<p class="step">Step 1: Run the Campbellsville TRAAP prompt</p>
+<pre class="prompt">I am a mobility-planning officer evaluating the timeliness, reliability, authority, audience, and point of view of the following report, &quot;Active Travel Fund – Old Shoreham Road,&quot; an officer report submitted to Brighton &amp; Hove City Council&#x27;s Environment, Transport &amp; Sustainability Urgency Sub-Committee, found at https://democracy.brighton-hove.gov.uk/documents/s169101/Active%20Travel%20Fund%20-%20Old%20Shoreham%20Road.pdf. Is the information up to date? Does the author provide a list of works cited in order to verify the information presented? Is the author an expert in the field? What are the author&#x27;s credentials? Is the resource scholarly, or is it written to enlighten, entertain, or advertise? Does the author try to present a biased or an unbiased point of view? Provide links to reliable sources to back up the information you found about this report.</pre>
+<p>The assistant&#x27;s trust judgement was strong on Authority (a named officer, David Parker, with council legal and finance sign-off, hosted on the council&#x27;s own statutory decision-making platform) and on Reliability (a Background Documents list — LTN 1/20, LTP5, the Traffic Management Act 2004, the UK Transport Decarbonisation Strategy — functions as a citation apparatus). It flagged Point of View as weak: this is an advocacy paper written to support a specific committee recommendation, not a neutral evaluation. It flagged Timeliness for a currency re-check, since the report is dated 2021 and leans on DfT statutory guidance whose current status needed confirming.</p>
+<p>The closing instruction of the Campbellsville prompt asks the assistant for links backing its judgement — those links exist to be checked, not to replace checking. The assistant pointed to the underlying gov.uk statutory guidance page as the source of the report&#x27;s central quoted claim. Opening that link directly surfaced a critical, non-obvious fact the assistant&#x27;s summary had not itself flagged: the guidance page banner states plainly.</p>
+<blockquote><p>This statutory guidance was withdrawn on 2 October 2023<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>This means the DfT statutory guidance the report leans on so heavily was in force in 2021 but is no longer current policy — the briefing note cannot present it as present-tense &quot;DfT practice&quot; without that caveat. Because the assistant&#x27;s training data has its own cutoff and can be stale on exactly this kind of date, this had to be checked by opening the page directly rather than accepted from the assistant&#x27;s statement.</p>
+<p class="step">Step 2: Compare — cross-check the report&#x27;s claims against another source</p>
+<p>The report quotes revised statutory guidance published under section 18 of the Traffic Management Act 2004 as saying schemes &quot;must not be removed prematurely or without proper evidence&quot; and that removal or modification decisions &quot;must be publicly consulted on with the same rigour as we require for decisions to install them.&quot;<sup id="cite-3"><a href="#ref-3">[3]</a></sup></p>
+<p>Checking this directly against the gov.uk publication itself confirms the wording verbatim, in the Secretary of State&#x27;s foreword.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<blockquote><p>We have no interest in requiring councils to keep schemes which are proven not to work. But that proof must be presented. Schemes must not be removed prematurely or without proper evidence. And any decisions on whether to remove or modify them must be publicly consulted on with the same rigour as we require for decisions to install them.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>The gov.uk foreword paragraph continues past this sentence to explain what standard the new consultation requirement sets, which matters for complete advice on what &quot;proper evidence&quot; and &quot;consulted with rigour&quot; require in practice.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<blockquote><p>This guidance lays out new standards for consultation, including the use of objective methods, such as professional polling, to provide a genuine picture of local opinion, rather than listening only to the loudest voices.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>The report&#x27;s own monitoring-and-evaluation section paraphrases the same guidance&#x27;s instruction that adjustments, not removal, should be the default, which the gov.uk source likewise confirms verbatim in its Monitoring and evaluation section.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<blockquote><p>Adjustments may be necessary to take account of real-world feedback but the aim should be to retain schemes and adjust, not remove them, unless there is substantial evidence to support this.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>The report&#x27;s separate warning that councils risk funding sanctions for premature removal, illustrated by West Sussex County Council&#x27;s exclusion from a funding round, appears twice in the report itself as independent corroborating detail, consistent with the same guidance&#x27;s emphasis on evidence-based, consulted decisions.<sup id="cite-3"><a href="#ref-3">[3]</a></sup></p>
+<p class="step">Step 3: Check citations for hallucinations — search for the report by a distinctive detail</p>
+<p>Rather than trusting the forwarded colleague description or asking the same assistant again, I searched for the report by its exact meeting date and committee name. This surfaced the same document, at the same council document ID, independently referenced on the council&#x27;s own site and in contemporaneous local coverage of the 10 August 2021 meeting. The report is a live, correctly attributed, non-hallucinated primary source hosted at the URL the assistant supplied — not an invented citation.</p>
+<p class="step">Step 4: Confirm — open the report and check both colleague claims</p>
+<p>Colleague email #1 claimed the report &quot;recommends REMOVAL of the Old Shoreham Road cycle lane.&quot; Opening the report&#x27;s own recommendations section shows the opposite.</p>
+<blockquote><p>That the committee agree to retain the Phase 1 temporary cycle lane on Old Shoreham Road due to the negative impact its removal would have on road safety, the environment, equality, and wider funding opportunities.<sup id="cite-3"><a href="#ref-3">[3]</a></sup></p></blockquote>
+<p>The report&#x27;s conclusion restates the same recommendation to retain the lane, so this is not an isolated line taken out of context.</p>
+<blockquote><p>The recommendations therefore propose retaining the Phase 1 section of Old Shoreham Road temporary cycle lanes.<sup id="cite-3"><a href="#ref-3">[3]</a></sup></p></blockquote>
+<p>Colleague email #2 claimed the report found &quot;over 75% of respondents felt unsafe using the temporary lane during the day.&quot; The report&#x27;s actual consultation-findings section says the reverse.</p>
+<blockquote><p>Over 75% of respondents who have used the temporary cycle lane since its installation said they felt safe or very safe while using it during the day.<sup id="cite-3"><a href="#ref-3">[3]</a></sup></p></blockquote>
+<p>Both colleague claims are inverted from what the primary document actually says: the report recommends retention, not removal, and it cites a safety finding, not an unsafety finding. The meeting date the report was submitted for, 10 August 2021, matches email #1&#x27;s date but not its substantive claim.</p>
+<p class="step">Step 5: Write the final evidence-file line</p>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Source</td><td>Brighton &amp; Hove City Council, &quot;Active Travel Fund – Old Shoreham Road,&quot; officer report to the Environment, Transport &amp; Sustainability Urgency Sub-Committee, meeting of 10 August 2021 (author: David Parker, Executive Director Economy, Environment &amp; Culture)</td></tr><tr><td>URL/Publisher</td><td>https://democracy.brighton-hove.gov.uk/documents/s169101/Active%20Travel%20Fund%20-%20Old%20Shoreham%20Road.pdf — Brighton &amp; Hove City Council (democracy.brighton-hove.gov.uk)</td></tr><tr><td>TRAAP-based trust justification</td><td>Trustworthy for Authority and Reliability as an official, named-author council report with a verified evidence trail, but it is a persuasive committee paper — not neutral — that recommended retaining, not removing, the lane and reported respondents feeling safe, not unsafe; and its core legal authority (the section 18 Traffic Management Act 2004 statutory guidance) was withdrawn by DfT on 2 October 2023, so it evidences past rather than current DfT practice.</td></tr></tbody></table>
+<p class="step">Step 6: Why an individual check, not a skim</p>
+<p>Both circulating email summaries were wrong on the two data points most likely to be quoted straight to the manager: email #1 turned an officer recommendation to retain the lane into a recommendation to remove it, and email #2 turned a safety finding into an unsafety finding — exactly backwards. An official-looking PDF on a council&#x27;s statutory decision-making platform carries exactly the surface authority that makes people stop checking, but &quot;looks official&quot; is not one of the TRAAP or UBC tests. Running the assistant&#x27;s own trust judgement back through Compare, Check citations for hallucinations, and Confirm is what caught both inversions before they reached the briefing note.</p>
+
+<h2>Takeaways</h2>
+<ul class="takeaways">
+  <li>An evidence-file entry is not complete with just what a source says; it must also record where the source came from and a TRAAP-based reason to trust it, because that is what a manager or auditor will ask for.</li>
+  <li>The TRAAP prompt&#x27;s closing instruction to provide backing links exists so you can check the assistant&#x27;s judgement, not so you can skip checking it — opening at least one flagged link can surface facts (like a withdrawal notice) the assistant&#x27;s summary itself did not flag.</li>
+  <li>Verifying a source before recording it means three separate moves: Compare the claim against another reliable source or the original context, Check the citation itself by searching directly for a distinctive detail, and Confirm by opening the source and checking it actually contains what was claimed.</li>
+  <li>Derived advice drawn from a regulation or guidance document must reflect the whole paragraph it comes from, not just the clause that supports the point you want to make.</li>
+  <li>A document looking official is not a substitute for opening it: two colleague-forwarded descriptions of this report were each inverted from what the primary document actually says, and only direct confirmation caught both.</li>
+</ul>
+
+<div class="refs">
+<h2>References</h2>
+<ol>
+  <li id="ref-1">Campbellsville University Montgomery Library. “AI as a Research Tool: AI for Evaluating Sources.” Campbellsville University LibGuides, Last updated Jul 21, 2026. <a href="https://campbellsville.libguides.com/AI-as-a-research-tool/evaluating-sources">https://campbellsville.libguides.com/AI-as-a-research-tool/evaluating-sources</a></li>
+  <li id="ref-2">Department for Transport. “[Withdrawn] Traffic Management Act 2004: network management to support active travel.” GOV.UK statutory guidance, Updated 1 April 2022; withdrawn 2 October 2023. <a href="https://www.gov.uk/government/publications/reallocating-road-space-in-response-to-covid-19-statutory-guidance-for-local-authorities/traffic-management-act-2004-network-management-in-response-to-covid-19">https://www.gov.uk/government/publications/reallocating-road-space-in-response-to-covid-19-statutory-guidance-for-local-authorities/traffic-management-act-2004-network-management-in-response-to-covid-19</a></li>
+  <li id="ref-3">David Parker, Executive Director Economy, Environment &amp; Culture, Brighton &amp; Hove City Council. “Active Travel Fund – Old Shoreham Road (officer report to the Environment, Transport &amp; Sustainability Urgency Sub-Committee).” Brighton &amp; Hove City Council democracy portal, 10 August 2021. <a href="https://democracy.brighton-hove.gov.uk/documents/s169101/Active%20Travel%20Fund%20-%20Old%20Shoreham%20Road.pdf">https://democracy.brighton-hove.gov.uk/documents/s169101/Active%20Travel%20Fund%20-%20Old%20Shoreham%20Road.pdf</a></li>
+</ol>
+</div>
+</body>
+</html>
