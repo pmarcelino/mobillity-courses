@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schema-first requirement matrix — worked example</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  color: #16212e;
+  background: #fff;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.25; }
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  border-top: 1px solid #d8d8e0;
+  padding-top: 1.2rem;
+}
+h1, h2, h3, .step {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+.box {
+  background: #f2f5f8;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+}
+.box h3 { margin-top: 0.2rem; font-size: 1rem; }
+.step {
+  display: inline-block;
+  background: #003f7f;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-top: 2rem;
+}
+.thinking {
+  background: #fff3ed;
+  border-left: 4px solid #ff7f50;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+}
+.thinking .label {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b34a22;
+}
+.thinking p { font-style: italic; margin: 0.5rem 0 0; }
+pre.prompt {
+  background: #062a4a;
+  color: #33ffff;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #003f7f;
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.2rem;
+  color: #333;
+}
+sup a { text-decoration: none; color: #003f7f; }
+.refs h2 { border-top: none; margin-top: 2.6rem; }
+.refs ol { padding-left: 1.4rem; }
+.refs li { margin-bottom: 0.6rem; }
+ul.takeaways li { margin-bottom: 0.7rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid #d8d8e0;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f2f5f8; }
+.brand {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #003f7f;
+  margin: 0 0 1.6rem;
+}
+</style>
+</head>
+<body>
+<p class="brand">MobiLLITY</p>
+<h1>Schema-first requirement matrix — worked example</h1>
+
+<div class="box">
+  <h3>After working through this example you will be able to</h3>
+  <ul>
+    <li>State a four-column extraction schema (source page, obligation, section/lot, response owner) as an explicit instruction to a chat assistant before running any extraction on a tender pack.</li>
+    <li>Write an extraction instruction that forces the assistant to read attachments and schedules, not just the body, and explain why that matters for scored content.</li>
+    <li>Split a compound tender sentence into separate one-obligation-per-row matrix entries, and justify each split.</li>
+    <li>Distinguish intent language from modal obligation language in a real tender document, and apply that distinction to decide what does not get a row.</li>
+    <li>Spot-check a drafted matrix row against the actual source document and identify a retrieval miss versus a confirmed row versus an unsupported claim.</li>
+  </ul>
+</div>
+
+<p>The consultancy is chasing the National Transport Authority&#x27;s Smart Demand Responsive Transport (SDRT) framework tender: a 49-page Invitation to Tender (ITT) plus schedules and appendices. The bid partner wants a first-pass requirement matrix on her desk tomorrow morning so the team can start assigning sections to writers. She has asked for the extraction to be run with a chat assistant tonight rather than the pack being shredded by hand, but she has seen a matrix go wrong on a past bid and wants the schema fixed and the citations spot-checked properly this time, not a spreadsheet dump.</p>
+<p>A junior analyst has already drafted three rows of a first-pass matrix before the ITT itself was opened. Those three rows need to be checked against the actual pack before anything is handed to writers.</p>
+
+<p class="step">Step 1 — Fix the schema and the one-row rule before running anything</p>
+<pre class="prompt">Build the matrix with exactly these four columns, in this order: (1) Source page — the ITT page number and clause reference, e.g. &quot;p.17, §4.6&quot;, not a range, not &quot;various&quot;. (2) Obligation — the requirement itself, quoted or closely paraphrased, preserving the modal verb (shall / must / will / is required to) rather than smoothing it into your own words. (3) Section/Lot — which part of the ITT structure it belongs to, e.g. &quot;Administrative Requirements&quot;, &quot;Award Criterion 1a&quot;, &quot;Scope&quot;. (4) Response owner — who on the bid team is accountable for producing that piece of the response. One row = one obligation. If a sentence contains more than one independently completable action, or names more than one deliverable or appendix, split it into as many rows as there are separate actions. Do not compress a compound sentence into one row, and do not create two rows for a single restated obligation.</pre>
+<p>This tracks the compliance-matrix guide&#x27;s own definition: a compliance matrix is a table with one row per requirement, recording where it came from, what it demands, where it is answered, and who is responsible for the answer — and the guide flags paraphrasing specifically because paraphrasing loses the modal verb, since &quot;shall&quot; and &quot;should&quot; are different obligations.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p>The guide states the split rule directly for compound paragraphs: a single paragraph demanding a schedule, a staffing plan and a risk register is three rows, because left as one row it gets one answer covering whichever part the writer noticed.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p class="step">Step 2 — Extraction instruction: read the whole pack, not just the body</p>
+<pre class="prompt">Read the entire 49-page ITT body (Sections 1–8) AND all six appendices (Appendix I Pricing Submission, II Form of Tender, III Article 57 Declaration, IV Data Protection, V Draft Agreement, VI Tender Response Document), plus Appendix VII&#x27;s list of referenced Schedules. Do not stop at Section 7 (Evaluation). Then flag, as a gap, every Schedule referenced but not physically included in this file (Schedule 1 Definitions, 2 Governance, 4 Services, 5 Performance, 6 Payments, 7 Change Control, 8 Exit Management, 9 Insurance, 10 Trade Marks and Branding, 11 Data Protection, 12 Security Requirements, 13 Business Continuity and Disaster Recovery, 14 Form of Escrow Agreement, 15 Key Personnel, 16 PCI Compliance) — these must be sourced and matrixed separately before the pass is complete.</pre>
+<p>The ITT itself tells you why this matters, at Section 3.4 Scope: the Agreement contains a number of schedules setting out obligations, requirements, processes and procedures related to the Services, and Tenderers are told a list of those schedules sits in Appendix VII.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p>The evaluation criteria confirm this repeatedly: Award Criterion 1 covers the Functional Requirements detailed in Appendix A of Schedule 4, Criterion 4 covers the performance levels required in Schedule 5, Criterion 6 requires continuity of services in compliance with Schedule 13, Criterion 7 requires meeting the security requirements outlined in Schedule 12, and Criterion 8 requires meeting the requirements of Schedule 11 Data Protection.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p>A matrix built only against the 49-page body text would miss most of the actual scored technical content, since that content sits in schedules the pack cross-references but does not paste in — exactly the guide&#x27;s own warning that requirements are distributed on purpose, with the statement of work carrying scope and the attachments carrying forms and certifications that are as mandatory as anything in the body, and that forms, certifications and representations are requirements most often discovered the night before submission.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p class="step">Step 3 — Splitting the Section 4.6 sentence into separate rows</p>
+<blockquote><p>Tenderers must complete the Appendix VI - Tender Response Document which accompanies this Invitation to Tender, including the Form of Tender and Pricing Schedule detailed in Section 4.9.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>This single sentence names three distinct deliverables, each governed by a different appendix, a different completion standard, and realistically a different owner, so it becomes three matrix rows rather than one.</p>
+<table><thead><tr><th>Row</th><th>Obligation extracted</th><th>Which appendix / clause</th><th>Why it is a separate obligation</th></tr></thead><tbody><tr><td>1</td><td>Complete the Appendix VI Tender Response Document (the narrative/technical response sections)</td><td>Appendix VI</td><td>This is the substantive quality submission — technical/solutions content, drafted by proposal writers against the Section 7 award criteria.</td></tr><tr><td>2</td><td>Complete and sign the Form of Tender</td><td>Appendix II, cross-referenced at §4.6</td><td>A different artifact entirely — a legal declaration requiring signature by a person authorised to bind the Tenderer, owned by legal/bid coordination, not the technical writing team.</td></tr><tr><td>3</td><td>Complete the Pricing Schedule per §4.9</td><td>Appendix I / §4.9, cross-referenced at §4.6</td><td>A priced spreadsheet feeding the 400-mark Price award criterion, owned by commercial/finance, with its own completion rules.</td></tr></tbody></table>
+<p>Treating it as one row is exactly the failure the compliance-matrix guide warns against: one answer ends up covering whichever part the writer noticed. A bid coordinator ticking off &quot;Appendix VI done&quot; could easily leave the Form of Tender unsigned or the Pricing Schedule unpriced, since both are only referenced inside the Appendix VI sentence rather than given their own line. Splitting surfaces three separate owners and three separate completion checks instead of one vague &quot;submission complete&quot; tick.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p class="step">Step 4 — An intent-language sentence that must NOT get a row</p>
+<blockquote><p>The Authority intends, following this tender process, to enter into an Agreement for the delivery of the Services (but does not bind itself to do so).<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p></blockquote>
+<p>This fails the obligation test on two grounds. First, it uses &quot;intends,&quot; not a modal obligation verb — the guide&#x27;s own test looks for shall, must, will, is required to, or a submission instruction, and gives as its own example that &quot;the Government intends&quot; usually is not a requirement.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p>Second, it is the Authority&#x27;s stated posture toward itself, not a Tenderer obligation, and the ITT immediately disclaims any binding effect. There is no action a Tenderer can perform to comply with this sentence; it isn&#x27;t addressed to Tenderers at all. Putting it on the matrix would give a writer a row with nothing to respond to and no owner who could meaningfully close it. The same non-obligation, discretion-reserving register recurs elsewhere in the ITT, for example the Authority reserving the right to conduct the evaluation steps in Section 7 in parallel or in a different order, and the same exclusion applies there.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p class="step">Step 5 — Spot-check the junior analyst&#x27;s three draft rows against the actual ITT pages</p>
+<p>Row A cites p.16, §4.3, for the deadline. Page 16, Section 4.3 &quot;Deadline for Receipt of Tenders,&quot; reads that the deadline for receipt of Tenders is 12:00 noon Friday 15th March 2024, with the onus on Tenderers to ensure their Tender has been received prior to the specified deadline. The row&#x27;s obligation text is an exact quote of that clause, on the exact page cited — confirmed, safe to hand to writers as-is.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p>Row B cites p.34, Criterion 1a. Page 34 is Section 7.3 &quot;Scoring Guidance – Stage 2&quot;: it opens by saying the responses to quality award criteria 1a–1d will be assessed as set out above, and gives the generic scoring-band table — it does not contain the screenshot-evidence obligation. That obligation actually sits on page 26, under the heading &quot;Criterion 1a&quot;: Tenderers must confirm their compliance with each individual requirement of Appendix A - Functional Requirements Sections FR01-FR014 by completing the table in Section 4.1 of the Tender Response Document, and must provide evidence of compliance by way of screenshot(s), each screenshot including a reference to the specification requirement(s) it is attributed to.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p>This is a retrieval miss on the page citation: the obligation text is accurate and well-drafted, but the source page is wrong by eight pages — precisely the failure the compliance-matrix guide warns about at its final build step, that a matrix pointing at the wrong page is worse than none because it sends the evaluator somewhere the answer is not and tells them you did not check. Correct the Source page column to p.26 and leave the obligation text as is.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p>Row C cites p.11, §3.4 Scope, for a cyber-insurance obligation of at least €2 million before the Operating Service Start Date. Page 11, Section 3.4 &quot;Scope,&quot; opens with the Agreement&#x27;s schedules setting out obligations, requirements, processes and procedures, then lists the Clients and the High-Level Solution/Delivery Scope bullets — nothing on this page mentions insurance, cyber-insurance, or any euro figure. Searching the rest of the ITT body and appendices for &quot;cyber&quot; and &quot;€2 million&quot; finds neither term anywhere in the document. The only insurance clause in the ITT is generic and unquantified, at Section 6.5: it is a pre-condition to award that the successful Tenderer shall provide the Authority with a valid current Tax Clearance Certificate and evidence that the insurance required under the Agreement is in place. Appendix VII lists &quot;Schedule 9 – Insurance&quot; by title only; its content is not included in this pack.<sup id="cite-2"><a href="#ref-2">[2]</a></sup></p>
+<p>This is not simply a mis-cited page — the specific obligation as drafted is not supported anywhere in the ITT itself. Either the figure came from Schedule 9, which is not in hand and must be obtained and matrixed separately, or the row was drafted from memory or assumption rather than from the document. This row should not be carried forward as drafted; it should be flagged to pull Schedule 9 – Insurance, verify whether a cyber-insurance figure exists there, and only then write the row with a correct source page.</p>
+<p>Summary for hand-off tonight: Row A is clean, use as-is. Row B keeps the obligation text but the Source page column is corrected to p.26. Row C is pulled from the matrix pending verification against Schedule 9 — as drafted it is unsupported by the ITT.</p>
+
+<h2>Takeaways</h2>
+<ul class="takeaways">
+  <li>A requirement matrix schema — source page, obligation, section/lot, response owner — is stated to the assistant as an explicit instruction before extraction, together with the one-obligation-per-row rule, so the tool cannot invent structure as it goes.</li>
+  <li>A compound sentence naming more than one deliverable or independently completable action is split into as many rows as there are separate actions, each with its own owner, rather than compressed into one row that gets one answer covering whichever part a writer noticed.</li>
+  <li>Extraction instructions must cover the whole pack, including appendices and referenced schedules, because requirements and scored content are deliberately distributed across body and attachments, and a body-only pass misses most of what is actually evaluated.</li>
+  <li>Modal language (shall, must, will, is required to) marks a genuine obligation; language describing the buyer&#x27;s own intent or reserved discretion is not addressed to Tenderers and must not be given a row.</li>
+  <li>Every page citation in a first-pass matrix is opened and checked against the actual document before it is trusted: a row can have the right obligation on the wrong page (a retrieval miss to be corrected) or can state an obligation that does not exist anywhere in the source at all (a fabrication to be pulled and flagged, not silently kept).</li>
+</ul>
+
+<div class="refs">
+<h2>References</h2>
+<ol>
+  <li id="ref-1">RFP.co. “The compliance matrix: How to build a compliance matrix — extracting every shall, must and will from a solicitation, mapping each to a response section, and proving coverage before submission.” RFP.co Resources, n.d.. <a href="https://rfp.co/resources/compliance-matrix">https://rfp.co/resources/compliance-matrix</a></li>
+  <li id="ref-2">National Transport Authority. “Invitation to Tender for a Single Party Framework for Implementation and Provision of Smart Demand Responsive Transport (SDRT) Solution &amp; Services.” eTenders.gov.ie, 2024. <a href="https://www.etenders.gov.ie/epps/cft/downloadContractDocument.do?documentId=3028024&amp;resourceId=3026521">https://www.etenders.gov.ie/epps/cft/downloadContractDocument.do?documentId=3028024&amp;resourceId=3026521</a></li>
+</ol>
+</div>
+</body>
+</html>

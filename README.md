@@ -9,6 +9,7 @@ MobiLLITY is built on a partnership between [**xval.ai**](https://xval.ai) and [
 ## Courses
 - [**mobillity-univ**](./mobillity-univ/) — MobiLLITY GenAI-Powered Data Analysis for Urban Mobility.
 - [**llm-mobility-tasks**](./llm-mobility-tasks/) — From Chatbot to Trusted Workflow: A Document-Production Course for Municipal Mobility Officers.
+- [**llm-mobility-business**](./llm-mobility-business/) — Working an Engagement with a Free-Tier Chat Assistant.
 
 _More courses will be added as they are produced._
 

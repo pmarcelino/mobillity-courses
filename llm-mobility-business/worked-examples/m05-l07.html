@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide outline from a drafted section — worked example</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.55;
+  color: #16212e;
+  background: #fff;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.25; }
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2.2rem;
+  border-top: 1px solid #d8d8e0;
+  padding-top: 1.2rem;
+}
+h1, h2, h3, .step {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+}
+.box {
+  background: #f2f5f8;
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+}
+.box h3 { margin-top: 0.2rem; font-size: 1rem; }
+.step {
+  display: inline-block;
+  background: #003f7f;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-top: 2rem;
+}
+.thinking {
+  background: #fff3ed;
+  border-left: 4px solid #ff7f50;
+  padding: 0.9rem 1.2rem;
+  margin: 1.2rem 0;
+}
+.thinking .label {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b34a22;
+}
+.thinking p { font-style: italic; margin: 0.5rem 0 0; }
+pre.prompt {
+  background: #062a4a;
+  color: #33ffff;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 4px solid #003f7f;
+  margin: 1.2rem 0;
+  padding: 0.2rem 1.2rem;
+  color: #333;
+}
+sup a { text-decoration: none; color: #003f7f; }
+.refs h2 { border-top: none; margin-top: 2.6rem; }
+.refs ol { padding-left: 1.4rem; }
+.refs li { margin-bottom: 0.6rem; }
+ul.takeaways li { margin-bottom: 0.7rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+th, td {
+  border: 1px solid #d8d8e0;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: #f2f5f8; }
+.brand {
+  font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #003f7f;
+  margin: 0 0 1.6rem;
+}
+</style>
+</head>
+<body>
+<p class="brand">MobiLLITY</p>
+<h1>Slide outline from a drafted section — worked example</h1>
+
+<div class="box">
+  <h3>After working through this example you will be able to</h3>
+  <ul>
+    <li>Restructure a checked, scored proposal paragraph into a single slide outline entry using the action-title-then-evidence mechanism.</li>
+    <li>Write a single-message prompt that instructs an assistant to produce one action title, supporting arguments, and named-source figures for exactly one slide.</li>
+    <li>Verify a slide&#x27;s flagged figure by tracing it back to its named primary source and identify any discrepancy between the restatement and the source&#x27;s exact wording.</li>
+  </ul>
+</div>
+
+<p>Your drafted proposal section for Criterion 1e (&quot;Benefits of routing algorithm&quot;) of the National Transport Authority&#x27;s SDRT framework tender has already been grounded and rubric-scored against the tender&#x27;s own award criteria. The client wants a short internal review deck before the proposal is finalized, and the deck tool needs a slide-by-slide outline built from that draft. You have three paragraphs of drafted section text and a 3pm review call. The task at hand is the first paragraph only.</p>
+<p>The paragraph to restructure into slide 1: &quot;Our routing algorithm is built to keep the SDRT pilot viable at the scale the tender describes. The Authority&#x27;s Invitation to Tender anticipates the Services could reach a maximum of 20 Transport Co-Ordination Units, with a potential maximum of 1,000 SDRT buses over the course of the Agreement, and each SDRT bus is expected to have an average max occupancy of eight people. Our dynamic routing engine has been benchmarked to hold sub-90-second re-optimisation times at exactly this scale, so the same solution that runs the Pilot&#x27;s three 16-seater buses per pilot area can scale to the National Rollout without a re-architecture.&quot;</p>
+
+<p class="step">Step 1 — Send slide 1&#x27;s content in a single message</p>
+<p>Following the mechanism, only the first paragraph&#x27;s content goes into the message, with an explicit instruction not to draft slides 2 or 3, and a requirement that any figure be named to its source and copied unchanged.</p>
+<pre class="prompt">Here is paragraph 1 of our drafted Criterion 1e section (&quot;Benefits of routing algorithm&quot;) for the SDRT tender response. This is the source content for Slide 1 only of our internal review deck — please do not draft slide 2 or slide 3 in this response.
+
+Paragraph:
+&quot;Our routing algorithm is built to keep the SDRT pilot viable at the scale the tender describes. The Authority&#x27;s Invitation to Tender anticipates the Services could reach a maximum of 20 Transport Co-Ordination Units, with a potential maximum of 1,000 SDRT buses over the course of the Agreement, and each SDRT bus is expected to have an average max occupancy of eight people. Our dynamic routing engine has been benchmarked to hold sub-90-second re-optimisation times at exactly this scale, so the same solution that runs the Pilot&#x27;s three 16-seater buses per pilot area can scale to the National Rollout without a re-architecture.&quot;
+
+Turn this into the Slide 1 outline entry:
+- One action-title line stating the single takeaway of this slide.
+- One or two supporting arguments beneath it.
+- The specific figures backing each argument, copied unchanged (not rounded or restated), with the source of each figure named exactly as it appears in the paragraph.
+
+Format as a slide outline (title + bullets), not prose.</pre>
+<p class="step">Step 2 — Read the resulting slide 1 outline</p>
+<p>The action title states the takeaway; the supporting arguments and named-source figures follow underneath, exactly as the mechanism specifies.</p>
+<blockquote><p>Slide 1 — Action title: &quot;Our routing algorithm is engineered to scale to the Authority&#x27;s full National Rollout ceiling without re-architecture.&quot;</p></blockquote>
+<table><thead><tr><th>Supporting argument</th><th>Figure</th><th>Named source</th></tr></thead><tbody><tr><td>The engine is benchmarked at the tender&#x27;s own maximum scale</td><td>maximum of 20 Transport Co-Ordination Units</td><td>Authority&#x27;s Invitation to Tender</td></tr><tr><td>The engine is benchmarked at the tender&#x27;s own maximum scale</td><td>potential maximum of 1,000 SDRT buses over the course of the Agreement</td><td>Authority&#x27;s Invitation to Tender</td></tr><tr><td>The engine is benchmarked at the tender&#x27;s own maximum scale</td><td>average max occupancy of eight people per SDRT bus</td><td>Authority&#x27;s Invitation to Tender</td></tr><tr><td>The engine is benchmarked at the tender&#x27;s own maximum scale</td><td>sub-90-second re-optimisation times held &quot;at exactly this scale&quot;</td><td>our own routing engine benchmarking</td></tr><tr><td>No re-architecture needed between Pilot and Rollout</td><td>same engine already runs three 16-seater buses per pilot area</td><td>Pilot deployment scale as described in the paragraph/tender&#x27;s Pilot scope</td></tr></tbody></table>
+<p class="step">Step 3 — Verify the flagged figure against the tender&#x27;s own text</p>
+<p>The draft paragraph&#x27;s restatement — &quot;the Authority&#x27;s Invitation to Tender anticipates the Services could reach a maximum of 20 Transport Co-Ordination Units, with a potential maximum of 1,000 SDRT buses over the course of the Agreement&quot; — was checked against the National Rollout subsection of the Invitation to Tender itself, the passage the tender&#x27;s own introduction points to as Section 3.3.2.<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<blockquote><p>The Authority anticipates the Services could amount to a maximum of 20 Transport Co-Ordination Units, with a potential maximum of 1,000 SDRT buses over the course of the Agreement. These are anticipated maximum estimated figures and are not guaranteed. The Authority reserves the right to exceed these maximums. Each SDRT bus is expected to have an average max occupancy of eight (8) people; and<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p></blockquote>
+<p>The three numeric figures on the slide — 20 Transport Co-Ordination Units, 1,000 SDRT buses, and an average max occupancy of eight people — match the tender&#x27;s own numbers exactly. But the restatement is not a verbatim match and drops load-bearing qualifying language from the same paragraph: the draft&#x27;s &quot;could reach a maximum&quot; substitutes for the tender&#x27;s &quot;could amount to a maximum,&quot; and the draft omits the tender&#x27;s own immediately following caveat that these are &quot;anticipated maximum estimated figures and are not guaranteed,&quot; with the Authority reserving &quot;the right to exceed these maximums.&quot;<sup id="cite-1"><a href="#ref-1">[1]</a></sup></p>
+<p>The headline numbers are copied correctly and can stay on the slide as-is. But the drafted paragraph&#x27;s framing overstates the certainty of the ceiling by pairing it with &quot;at exactly this scale&quot;: the tender itself hedges these figures as non-guaranteed estimates it may exceed, and that hedge belongs in the same paragraph the figures come from. This should be flagged to the proposal lead before finalizing — either soften the &quot;at exactly this scale&quot; language or add a line acknowledging the ITT&#x27;s own &quot;not guaranteed / may exceed&quot; caveat, so the routing-algorithm benefit claim does not imply a hard scale cap that the client&#x27;s own tender document explicitly disclaims.</p>
+
+<h2>Takeaways</h2>
+<ul class="takeaways">
+  <li>A slide outline restructures a checked paragraph one slide at a time: send only that slide&#x27;s content in a single message, and get back one action title followed by supporting arguments and named-source figures.</li>
+  <li>The action title goes first because it is the point of the slide; the figures exist to support it, not the reverse.</li>
+  <li>Every figure must be copied unchanged and tied to its named source — here, the numeric figures (20 TCUs, 1,000 buses, eight-person occupancy) did carry over unchanged from the Invitation to Tender.</li>
+  <li>Verifying a slide&#x27;s figure means opening the exact named source and checking it, not re-deriving it — and the check can surface a different failure than a wrong number: a restatement can drop a qualifying clause from the same source paragraph, changing what the figure implies even though the number itself is correct.</li>
+  <li>A dropped caveat is a structural slip introduced by restructuring, not a new conceptual error — the fix is to restore the qualifying language or soften the derived claim, not to re-verify the whole paragraph from scratch.</li>
+</ul>
+
+<div class="refs">
+<h2>References</h2>
+<ol>
+  <li id="ref-1">National Transport Authority. “Invitation to Tender for a Single Party Framework for Implementation and Provision of Smart Demand Responsive Transport (SDRT) Solution &amp; Services.” eTenders.gov.ie, 2024. <a href="https://www.etenders.gov.ie/epps/cft/downloadContractDocument.do?documentId=3028024&amp;resourceId=3026521">https://www.etenders.gov.ie/epps/cft/downloadContractDocument.do?documentId=3028024&amp;resourceId=3026521</a></li>
+</ol>
+</div>
+</body>
+</html>
